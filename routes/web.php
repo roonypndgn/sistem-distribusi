@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PanenController;
+use App\Http\Controllers\PengemasanController;
+use App\Http\Controllers\PengirimanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +67,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/harga-pembelian', [PembelianController::class, 'hargaPembelian'])->name('manajer.harga-pembelian');
         Route::post('/harga-pembelian', [PembelianController::class, 'simpanHargaPembelian'])->name('manajer.simpan-harga-pembelian');
         Route::get('/data-panen',[PanenController::class, 'dataPanen'])->name('manajer.data-panen');
+        Route::get('/data-pengemasan',[PengemasanController::class, 'dataPengemasan'])->name('manajer.data-pengemasan');
+        Route::get('/data-pengiriman',[PengirimanController::class, 'dataPengiriman'])->name('manajer.data-pengiriman');
+        
     });
 });
 
