@@ -21,7 +21,7 @@ Route::middleware('guest')->group(function () {
 // Route untuk auth (sudah login)
 Route::middleware('auth')->group(function () {
     // Logout
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
     
     // Redirect root berdasarkan role
     Route::get('/', function () {
