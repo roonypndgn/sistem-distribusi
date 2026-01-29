@@ -50,4 +50,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pembelian::class);
     }
+    public function absensis()
+{
+    return $this->hasMany(Absensi::class);
+}
+
+public function penggajians()
+{
+    return $this->hasMany(Penggajian::class);
+}
+
 }
