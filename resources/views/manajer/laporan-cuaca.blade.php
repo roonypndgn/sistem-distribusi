@@ -1,6 +1,3 @@
-# Tampilan Laporan Cuaca Lapangan
-
-```html
 @extends('layouts.manajer')
 
 @section('title', 'Laporan Cuaca Lapangan - PT. Mardua Holong')
@@ -11,14 +8,13 @@
 @section('content')
 <div class="content-wrapper">
     <!-- Header -->
-    <div class="content-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-        <div>
-            <h1 style="font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px;">Laporan Cuaca Lapangan</h1>
-            <p style="color: var(--text-light); font-size: 14px;">Pantau kondisi cuaca dan gangguan di ladang jeruk</p>
+    <div class="content-header">
+        <div class="header-left">
+            <h1>Laporan Cuaca Lapangan</h1>
+            <p>Pantau kondisi cuaca dan gangguan di ladang jeruk</p>
         </div>
-        
-        <div style="display: flex; gap: 10px;">
-            <button type="button" id="syncWeatherBtn" class="btn" style="background-color: var(--bg-light); color: var(--text-light);">
+        <div class="header-right">
+            <button type="button" id="syncWeatherBtn" class="btn btn-secondary">
                 <i class="fas fa-sync-alt"></i> Sync Data Cuaca
             </button>
             <button type="button" id="exportReportBtn" class="btn btn-primary">
@@ -28,94 +24,93 @@
     </div>
     
     <!-- Form Input Laporan -->
-    <div class="content-card" style="margin-bottom: 30px;">
-        <div class="card-title">
-            <span>Form Input Laporan Cuaca</span>
-            <div class="card-icon">
+    <div class="content-card">
+        <div class="card-header">
+            <div class="card-title">
                 <i class="fas fa-cloud-sun"></i>
+                <span>Form Input Laporan Cuaca</span>
             </div>
         </div>
         
-        <!-- Success Alert -->
-        <div id="successAlert" class="alert-success" style="display: none;">
+        <!-- Alert Messages -->
+        <div id="successAlert" class="alert alert-success" style="display: none;">
             <i class="fas fa-check-circle"></i>
             <span id="successMessage"></span>
         </div>
         
-        <!-- Error Alert -->
-        <div id="errorAlert" class="alert-error" style="display: none;">
+        <div id="errorAlert" class="alert alert-error" style="display: none;">
             <i class="fas fa-exclamation-circle"></i>
             <span id="errorMessage"></span>
         </div>
         
         <form id="weatherForm">
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px;">
+            <div class="form-grid">
                 <!-- Kolom Kiri -->
-                <div>
+                <div class="form-column">
                     <!-- Ladang -->
                     <div class="form-group">
-                        <label class="form-label">Ladang *</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-tractor input-icon"></i>
-                            <select id="ladang_id" name="ladang_id" class="form-control" required>
-                                <option value="">-- Pilih Ladang --</option>
-                                <option value="1">Ladang Simalungun (Berastagi) | 2.5 Ha | Tuan Sitorus</option>
-                                <option value="2">Ladang Berastagi (Pusat) | 3.0 Ha | Budi Santoso</option>
-                                <option value="3">Ladang Sipirok | 1.8 Ha | Joko Widodo</option>
-                                <option value="4">Ladang Parapat | 2.2 Ha | Siti Aminah</option>
-                                <option value="5">Ladang Karo | 1.5 Ha | Rudi Hartono</option>
-                            </select>
-                        </div>
+                        <label class="form-label">
+                            <i class="fas fa-tractor"></i>
+                            Ladang *
+                        </label>
+                        <select id="ladang_id" name="ladang_id" class="form-control" required>
+                            <option value="">-- Pilih Ladang --</option>
+                            <option value="1">Ladang Simalungun (Berastagi) | 2.5 Ha | Tuan Sitorus</option>
+                            <option value="2">Ladang Berastagi (Pusat) | 3.0 Ha | Budi Santoso</option>
+                            <option value="3">Ladang Sipirok | 1.8 Ha | Joko Widodo</option>
+                            <option value="4">Ladang Parapat | 2.2 Ha | Siti Aminah</option>
+                            <option value="5">Ladang Karo | 1.5 Ha | Rudi Hartono</option>
+                        </select>
                         <small class="form-text">Pilih ladang yang akan dilaporkan</small>
                     </div>
                     
                     <!-- Info Ladang -->
-                    <div id="ladangInfo" style="display: none; background-color: var(--primary-lighter); border-radius: 10px; padding: 15px; margin-top: 15px;">
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 13px;">
-                            <div>
-                                <div style="color: var(--text-light);">Pemilik</div>
-                                <div style="font-weight: 600; color: var(--text-dark);" id="infoPemilik">-</div>
+                    <div id="ladangInfo" class="info-card" style="display: none;">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Pemilik</div>
+                                <div class="info-value" id="infoPemilik">-</div>
                             </div>
-                            <div>
-                                <div style="color: var(--text-light);">Luas</div>
-                                <div style="font-weight: 600; color: var(--text-dark);" id="infoLuas">-</div>
+                            <div class="info-item">
+                                <div class="info-label">Luas</div>
+                                <div class="info-value" id="infoLuas">-</div>
                             </div>
-                            <div>
-                                <div style="color: var(--text-light);">Lokasi</div>
-                                <div style="font-weight: 600; color: var(--text-dark);" id="infoLokasi">-</div>
+                            <div class="info-item">
+                                <div class="info-label">Lokasi</div>
+                                <div class="info-value" id="infoLokasi">-</div>
                             </div>
-                            <div>
-                                <div style="color: var(--text-light);">Ketinggian</div>
-                                <div style="font-weight: 600; color: var(--text-dark);" id="infoKetinggian">-</div>
+                            <div class="info-item">
+                                <div class="info-label">Ketinggian</div>
+                                <div class="info-value" id="infoKetinggian">-</div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Tanggal -->
                     <div class="form-group">
-                        <label class="form-label">Tanggal *</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-calendar-alt input-icon"></i>
-                            <input type="date" id="tanggal" name="tanggal" class="form-control" 
-                                   value="{{ date('Y-m-d') }}" required>
-                        </div>
+                        <label class="form-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            Tanggal *
+                        </label>
+                        <input type="date" id="tanggal" name="tanggal" class="form-control" 
+                               value="{{ date('Y-m-d') }}" required>
                         <small class="form-text">Tanggal observasi cuaca</small>
                     </div>
                     
                     <!-- Waktu Observasi -->
                     <div class="form-group">
-                        <label class="form-label">Waktu Observasi</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-clock input-icon"></i>
-                            <input type="time" id="waktu" name="waktu" class="form-control" 
-                                   value="{{ date('H:i') }}">
-                        </div>
+                        <label class="form-label">
+                            <i class="fas fa-clock"></i>
+                            Waktu Observasi
+                        </label>
+                        <input type="time" id="waktu" name="waktu" class="form-control" 
+                               value="{{ date('H:i') }}">
                         <small class="form-text">Waktu pengamatan (opsional)</small>
                     </div>
                 </div>
                 
                 <!-- Kolom Kanan -->
-                <div>
+                <div class="form-column">
                     <!-- Sumber Data -->
                     <div class="form-group">
                         <label class="form-label">Sumber Data *</label>
@@ -151,36 +146,36 @@
                     </div>
                     
                     <!-- Cuaca Sekarang (API) -->
-                    <div id="apiWeatherInfo" style="display: none; background-color: #E3F2FD; border-radius: 10px; padding: 15px; margin-bottom: 20px;">
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
-                            <div style="font-size: 32px; color: #2196F3;">
+                    <div id="apiWeatherInfo" class="weather-card" style="display: none;">
+                        <div class="weather-header">
+                            <div class="weather-icon">
                                 <i class="fas fa-cloud-sun-rain"></i>
                             </div>
-                            <div>
-                                <div style="font-weight: 600; color: var(--text-dark); font-size: 16px;">Data Cuaca BMKG</div>
-                                <div style="font-size: 13px; color: var(--text-light);">Berastagi, {{ date('d M Y') }}</div>
+                            <div class="weather-title">
+                                <div class="title">Data Cuaca BMKG</div>
+                                <div class="subtitle">Berastagi, {{ date('d M Y') }}</div>
                             </div>
                         </div>
-                        <div id="apiWeatherData" style="font-size: 13px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                                <span style="color: var(--text-light);">Suhu:</span>
-                                <span style="font-weight: 600; color: var(--text-dark);" id="apiSuhu">- °C</span>
+                        <div class="weather-data" id="apiWeatherData">
+                            <div class="weather-item">
+                                <span class="label">Suhu:</span>
+                                <span class="value" id="apiSuhu">- °C</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                                <span style="color: var(--text-light);">Kelembaban:</span>
-                                <span style="font-weight: 600; color: var(--text-dark);" id="apiKelembaban">- %</span>
+                            <div class="weather-item">
+                                <span class="label">Kelembaban:</span>
+                                <span class="value" id="apiKelembaban">- %</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                                <span style="color: var(--text-light);">Kecepatan Angin:</span>
-                                <span style="font-weight: 600; color: var(--text-dark);" id="apiAngin">- km/jam</span>
+                            <div class="weather-item">
+                                <span class="label">Kecepatan Angin:</span>
+                                <span class="value" id="apiAngin">- km/jam</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <span style="color: var(--text-light);">Kondisi:</span>
-                                <span style="font-weight: 600; color: #2196F3;" id="apiKondisi">-</span>
+                            <div class="weather-item">
+                                <span class="label">Kondisi:</span>
+                                <span class="value" id="apiKondisi">-</span>
                             </div>
                         </div>
-                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #BBDEFB;">
-                            <button type="button" id="loadWeatherBtn" class="btn" style="width: 100%; padding: 8px; font-size: 13px; background-color: #2196F3; color: white;">
+                        <div class="weather-footer">
+                            <button type="button" id="loadWeatherBtn" class="btn btn-info">
                                 <i class="fas fa-download"></i> Load Data Cuaca Terbaru
                             </button>
                         </div>
@@ -190,32 +185,30 @@
                     <div id="manualInputSection">
                         <!-- Curah Hujan -->
                         <div class="form-group">
-                            <label class="form-label">Curah Hujan (mm) *</label>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <div style="position: relative; flex: 1;">
-                                    <div class="input-wrapper">
-                                        <i class="fas fa-cloud-rain input-icon"></i>
-                                        <input type="number" id="curah_hujan" name="curah_hujan" class="form-control" 
-                                               placeholder="0" min="0" max="500" step="0.1" required>
-                                    </div>
-                                </div>
-                                <div style="font-size: 14px; color: var(--text-light);">mm</div>
+                            <label class="form-label">
+                                <i class="fas fa-cloud-rain"></i>
+                                Curah Hujan (mm) *
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="curah_hujan" name="curah_hujan" class="form-control" 
+                                       placeholder="0" min="0" max="500" step="0.1" required>
+                                <span class="unit">mm</span>
                             </div>
                             <small class="form-text">Jumlah hujan dalam 24 jam terakhir</small>
                             
                             <!-- Indikator Curah Hujan -->
-                            <div id="rainIndicator" style="margin-top: 10px;">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                                    <span style="font-size: 12px; color: var(--text-light);">Rendah</span>
-                                    <span style="font-size: 12px; color: var(--text-light);">Tinggi</span>
+                            <div id="rainIndicator" class="rain-indicator">
+                                <div class="indicator-labels">
+                                    <span>Rendah</span>
+                                    <span>Tinggi</span>
                                 </div>
-                                <div style="height: 8px; background: linear-gradient(to right, #4CAF50, #FFEB3B, #FF9800, #F44336); border-radius: 4px; position: relative;">
-                                    <div id="rainMarker" style="position: absolute; top: -4px; width: 16px; height: 16px; background-color: var(--primary); border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                                <div class="indicator-bar">
+                                    <div id="rainMarker" class="indicator-marker"></div>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; margin-top: 5px;">
-                                    <span style="font-size: 11px; color: #4CAF50;">&lt; 20mm</span>
-                                    <span style="font-size: 11px; color: #FF9800;">20-100mm</span>
-                                    <span style="font-size: 11px; color: #F44336;">&gt; 100mm</span>
+                                <div class="indicator-range">
+                                    <span style="color: #4CAF50;">&lt; 20mm</span>
+                                    <span style="color: #FF9800;">20-100mm</span>
+                                    <span style="color: #F44336;">&gt; 100mm</span>
                                 </div>
                             </div>
                         </div>
@@ -224,36 +217,36 @@
             </div>
             
             <!-- Laporan Gangguan -->
-            <div class="form-group">
-                <label class="form-label">Laporan Gangguan</label>
-                <div style="background-color: var(--bg-light); border-radius: 10px; padding: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                        <div>
-                            <div style="font-weight: 600; color: var(--text-dark); font-size: 15px;">Jenis Gangguan yang Ditemukan</div>
-                            <div style="font-size: 13px; color: var(--text-light);">Centang gangguan yang teridentifikasi</div>
-                        </div>
-                        <button type="button" id="tambahGangguanBtn" class="btn" style="background-color: var(--primary-lighter); color: var(--primary); padding: 8px 12px; font-size: 13px;">
-                            <i class="fas fa-plus"></i> Tambah Gangguan Baru
-                        </button>
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Laporan Gangguan
                     </div>
-                    
-                    <!-- Daftar Gangguan -->
-                    <div id="gangguanList" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                        <!-- Gangguan akan ditambahkan via JavaScript -->
-                    </div>
-                    
-                    <!-- Catatan Gangguan -->
-                    <div style="margin-top: 20px;">
-                        <label class="form-label">Catatan Detail Gangguan</label>
-                        <textarea id="catatan_gangguan" name="catatan_gangguan" class="form-control" rows="3" 
-                                  placeholder="Deskripsikan gangguan secara detail, lokasi tepatnya, dan tindakan yang sudah dilakukan..."></textarea>
-                    </div>
+                    <button type="button" id="tambahGangguanBtn" class="btn btn-outline">
+                        <i class="fas fa-plus"></i> Tambah Gangguan Baru
+                    </button>
+                </div>
+                
+                <!-- Daftar Gangguan -->
+                <div id="gangguanList" class="gangguan-grid">
+                    <!-- Gangguan akan ditambahkan via JavaScript -->
+                </div>
+                
+                <!-- Catatan Gangguan -->
+                <div class="form-group">
+                    <label class="form-label">Catatan Detail Gangguan</label>
+                    <textarea id="catatan_gangguan" name="catatan_gangguan" class="form-control" rows="3" 
+                              placeholder="Deskripsikan gangguan secara detail, lokasi tepatnya, dan tindakan yang sudah dilakukan..."></textarea>
                 </div>
             </div>
             
             <!-- Foto Dokumentasi -->
-            <div class="form-group">
-                <label class="form-label">Foto Dokumentasi (Opsional)</label>
+            <div class="form-section">
+                <label class="form-label">
+                    <i class="fas fa-camera"></i>
+                    Foto Dokumentasi (Opsional)
+                </label>
                 <div class="photo-upload-area" id="photoUploadArea">
                     <div class="photo-upload-content">
                         <i class="fas fa-cloud-upload-alt"></i>
@@ -263,38 +256,38 @@
                     <input type="file" id="foto_dokumentasi" name="foto_dokumentasi" accept="image/*" 
                            multiple style="display: none;">
                 </div>
-                <div id="photoPreviewContainer" style="display: none; margin-top: 15px;">
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;" id="photoPreviews">
+                <div id="photoPreviewContainer" class="photo-preview-container" style="display: none;">
+                    <div class="photo-previews" id="photoPreviews">
                         <!-- Foto preview akan ditambahkan di sini -->
                     </div>
                 </div>
             </div>
             
             <!-- Rekomendasi -->
-            <div id="recommendationSection" style="display: none; background-color: #FFF3E0; border-radius: 10px; padding: 20px; margin-bottom: 20px;">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                    <div style="font-size: 24px; color: #FF9800;">
+            <div id="recommendationSection" class="recommendation-card" style="display: none;">
+                <div class="recommendation-header">
+                    <div class="recommendation-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
-                    <div>
-                        <div style="font-weight: 600; color: var(--text-dark); font-size: 16px;">Rekomendasi</div>
-                        <div style="font-size: 13px; color: var(--text-light);">Saran berdasarkan kondisi cuaca</div>
+                    <div class="recommendation-title">
+                        <div class="title">Rekomendasi</div>
+                        <div class="subtitle">Saran berdasarkan kondisi cuaca</div>
                     </div>
                 </div>
-                <div id="recommendationContent" style="font-size: 14px; color: #5D4037;">
+                <div id="recommendationContent" class="recommendation-content">
                     <!-- Rekomendasi akan diisi -->
                 </div>
             </div>
             
             <!-- Tombol Aksi -->
-            <div style="display: flex; gap: 10px; margin-top: 30px;">
-                <button type="button" id="resetBtn" class="btn btn-secondary" style="flex: 1;">
+            <div class="form-actions">
+                <button type="button" id="resetBtn" class="btn btn-secondary">
                     <i class="fas fa-redo"></i> Reset Form
                 </button>
-                <button type="button" id="simpanDraftBtn" class="btn" style="flex: 1; background-color: var(--bg-light); color: var(--text-dark);">
+                <button type="button" id="simpanDraftBtn" class="btn btn-outline">
                     <i class="fas fa-save"></i> Simpan Draft
                 </button>
-                <button type="submit" id="submitBtn" class="btn btn-success" style="flex: 2;">
+                <button type="submit" id="submitBtn" class="btn btn-success">
                     <i class="fas fa-paper-plane"></i> Simpan Laporan
                 </button>
             </div>
@@ -303,88 +296,88 @@
     
     <!-- Data Cuaca Terkini -->
     <div class="content-card">
-        <div class="card-title">
-            <span>Data Cuaca Terkini</span>
-            <div class="card-icon">
+        <div class="card-header">
+            <div class="card-title">
                 <i class="fas fa-chart-line"></i>
+                <span>Data Cuaca Terkini</span>
             </div>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;">
-            <div style="text-align: center;">
-                <div style="font-size: 32px; color: #F44336; margin-bottom: 5px;">
+        <div class="weather-stats">
+            <div class="stat-item">
+                <div class="stat-icon" style="color: #F44336;">
                     <i class="fas fa-thermometer-half"></i>
                 </div>
-                <div style="font-size: 24px; font-weight: 700; color: var(--text-dark);">26°C</div>
-                <div style="font-size: 13px; color: var(--text-light);">Suhu Rata-rata</div>
+                <div class="stat-number">26°C</div>
+                <div class="stat-label">Suhu Rata-rata</div>
             </div>
             
-            <div style="text-align: center;">
-                <div style="font-size: 32px; color: #2196F3; margin-bottom: 5px;">
+            <div class="stat-item">
+                <div class="stat-icon" style="color: #2196F3;">
                     <i class="fas fa-tint"></i>
                 </div>
-                <div style="font-size: 24px; font-weight: 700; color: var(--text-dark);">75%</div>
-                <div style="font-size: 13px; color: var(--text-light);">Kelembaban</div>
+                <div class="stat-number">75%</div>
+                <div class="stat-label">Kelembaban</div>
             </div>
             
-            <div style="text-align: center;">
-                <div style="font-size: 32px; color: #4CAF50; margin-bottom: 5px;">
+            <div class="stat-item">
+                <div class="stat-icon" style="color: #4CAF50;">
                     <i class="fas fa-cloud-rain"></i>
                 </div>
-                <div style="font-size: 24px; font-weight: 700; color: var(--text-dark);">45mm</div>
-                <div style="font-size: 13px; color: var(--text-light);">Curah Hujan (7 hari)</div>
+                <div class="stat-number">45mm</div>
+                <div class="stat-label">Curah Hujan (7 hari)</div>
             </div>
             
-            <div style="text-align: center;">
-                <div style="font-size: 32px; color: #FF9800; margin-bottom: 5px;">
+            <div class="stat-item">
+                <div class="stat-icon" style="color: #FF9800;">
                     <i class="fas fa-wind"></i>
                 </div>
-                <div style="font-size: 24px; font-weight: 700; color: var(--text-dark);">12 km/j</div>
-                <div style="font-size: 13px; color: var(--text-light);">Angin Rata-rata</div>
+                <div class="stat-number">12 km/j</div>
+                <div class="stat-label">Angin Rata-rata</div>
             </div>
         </div>
         
         <!-- Grafik Curah Hujan -->
-        <div>
-            <h4 style="margin-bottom: 15px; color: var(--text-dark); font-size: 16px;">
-                <i class="fas fa-chart-bar"></i> Curah Hujan 7 Hari Terakhir
-            </h4>
-            <div style="height: 200px; display: flex; align-items: flex-end; gap: 15px; padding: 20px; background-color: var(--bg-light); border-radius: 10px;">
-                <!-- Bar chart akan diisi oleh JavaScript -->
-                <div class="rain-bar" data-day="Sen" data-rain="15" style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                    <div class="bar-value" style="font-size: 12px; color: var(--text-dark); margin-bottom: 5px;">15mm</div>
-                    <div class="bar" style="width: 80%; background: linear-gradient(to top, #2196F3, #64B5F6); border-radius: 4px 4px 0 0; height: 60px;"></div>
-                    <div class="bar-label" style="font-size: 12px; color: var(--text-light); margin-top: 5px;">Sen</div>
+        <div class="chart-section">
+            <div class="chart-header">
+                <i class="fas fa-chart-bar"></i>
+                <h4>Curah Hujan 7 Hari Terakhir</h4>
+            </div>
+            <div class="rain-chart">
+                <div class="chart-bar" data-day="Sen" data-rain="15">
+                    <div class="bar-value">15mm</div>
+                    <div class="bar" style="height: 60px;"></div>
+                    <div class="bar-label">Sen</div>
                 </div>
-                <div class="rain-bar" data-day="Sel" data-rain="8" style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                    <div class="bar-value" style="font-size: 12px; color: var(--text-dark); margin-bottom: 5px;">8mm</div>
-                    <div class="bar" style="width: 80%; background: linear-gradient(to top, #2196F3, #64B5F6); border-radius: 4px 4px 0 0; height: 32px;"></div>
-                    <div class="bar-label" style="font-size: 12px; color: var(--text-light); margin-top: 5px;">Sel</div>
+                <div class="chart-bar" data-day="Sel" data-rain="8">
+                    <div class="bar-value">8mm</div>
+                    <div class="bar" style="height: 32px;"></div>
+                    <div class="bar-label">Sel</div>
                 </div>
-                <div class="rain-bar" data-day="Rab" data-rain="25" style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                    <div class="bar-value" style="font-size: 12px; color: var(--text-dark); margin-bottom: 5px;">25mm</div>
-                    <div class="bar" style="width: 80%; background: linear-gradient(to top, #2196F3, #64B5F6); border-radius: 4px 4px 0 0; height: 100px;"></div>
-                    <div class="bar-label" style="font-size: 12px; color: var(--text-light); margin-top: 5px;">Rab</div>
+                <div class="chart-bar" data-day="Rab" data-rain="25">
+                    <div class="bar-value">25mm</div>
+                    <div class="bar" style="height: 100px;"></div>
+                    <div class="bar-label">Rab</div>
                 </div>
-                <div class="rain-bar" data-day="Kam" data-rain="45" style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                    <div class="bar-value" style="font-size: 12px; color: var(--text-dark); margin-bottom: 5px;">45mm</div>
-                    <div class="bar" style="width: 80%; background: linear-gradient(to top, #FF9800, #FFB74D); border-radius: 4px 4px 0 0; height: 180px;"></div>
-                    <div class="bar-label" style="font-size: 12px; color: var(--text-light); margin-top: 5px;">Kam</div>
+                <div class="chart-bar" data-day="Kam" data-rain="45">
+                    <div class="bar-value">45mm</div>
+                    <div class="bar" style="height: 180px;"></div>
+                    <div class="bar-label">Kam</div>
                 </div>
-                <div class="rain-bar" data-day="Jum" data-rain="12" style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                    <div class="bar-value" style="font-size: 12px; color: var(--text-dark); margin-bottom: 5px;">12mm</div>
-                    <div class="bar" style="width: 80%; background: linear-gradient(to top, #2196F3, #64B5F6); border-radius: 4px 4px 0 0; height: 48px;"></div>
-                    <div class="bar-label" style="font-size: 12px; color: var(--text-light); margin-top: 5px;">Jum</div>
+                <div class="chart-bar" data-day="Jum" data-rain="12">
+                    <div class="bar-value">12mm</div>
+                    <div class="bar" style="height: 48px;"></div>
+                    <div class="bar-label">Jum</div>
                 </div>
-                <div class="rain-bar" data-day="Sab" data-rain="5" style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                    <div class="bar-value" style="font-size: 12px; color: var(--text-dark); margin-bottom: 5px;">5mm</div>
-                    <div class="bar" style="width: 80%; background: linear-gradient(to top, #4CAF50, #81C784); border-radius: 4px 4px 0 0; height: 20px;"></div>
-                    <div class="bar-label" style="font-size: 12px; color: var(--text-light); margin-top: 5px;">Sab</div>
+                <div class="chart-bar" data-day="Sab" data-rain="5">
+                    <div class="bar-value">5mm</div>
+                    <div class="bar" style="height: 20px;"></div>
+                    <div class="bar-label">Sab</div>
                 </div>
-                <div class="rain-bar" data-day="Min" data-rain="18" style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                    <div class="bar-value" style="font-size: 12px; color: var(--text-dark); margin-bottom: 5px;">18mm</div>
-                    <div class="bar" style="width: 80%; background: linear-gradient(to top, #2196F3, #64B5F6); border-radius: 4px 4px 0 0; height: 72px;"></div>
-                    <div class="bar-label" style="font-size: 12px; color: var(--text-light); margin-top: 5px;">Min</div>
+                <div class="chart-bar" data-day="Min" data-rain="18">
+                    <div class="bar-value">18mm</div>
+                    <div class="bar" style="height: 72px;"></div>
+                    <div class="bar-label">Min</div>
                 </div>
             </div>
         </div>
@@ -392,24 +385,24 @@
     
     <!-- Riwayat Laporan -->
     <div class="content-card">
-        <div class="card-title">
-            <span>Riwayat Laporan Cuaca</span>
-            <div class="card-icon">
+        <div class="card-header">
+            <div class="card-title">
                 <i class="fas fa-history"></i>
+                <span>Riwayat Laporan Cuaca</span>
             </div>
         </div>
         
-        <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse;">
+        <div class="table-responsive">
+            <table class="data-table">
                 <thead>
-                    <tr style="background-color: var(--bg-light); border-bottom: 2px solid var(--border);">
-                        <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark); width: 50px;">No</th>
-                        <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">Ladang</th>
-                        <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">Tanggal</th>
-                        <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">Curah Hujan</th>
-                        <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">Gangguan</th>
-                        <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">Sumber Data</th>
-                        <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark); width: 120px;">Aksi</th>
+                    <tr>
+                        <th style="width: 50px;">No</th>
+                        <th>Ladang</th>
+                        <th>Tanggal</th>
+                        <th>Curah Hujan</th>
+                        <th>Gangguan</th>
+                        <th>Sumber Data</th>
+                        <th style="width: 120px;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="reportTableBody">
@@ -419,18 +412,18 @@
         </div>
         
         <!-- Pagination -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
-            <div style="font-size: 14px; color: var(--text-light);">
+        <div class="table-footer">
+            <div class="showing-count">
                 Menampilkan <span id="showingCount">0</span> dari <span id="totalCount">0</span> laporan
             </div>
-            <div style="display: flex; gap: 5px;">
-                <button type="button" class="btn-pagination prev" style="padding: 8px 12px; background-color: var(--primary-lighter); color: var(--primary); border: none; border-radius: 6px; cursor: pointer;">
+            <div class="pagination">
+                <button type="button" class="btn-pagination prev">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button type="button" class="btn-pagination page active" data-page="1" style="padding: 8px 12px; background-color: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">1</button>
-                <button type="button" class="btn-pagination page" data-page="2" style="padding: 8px 12px; background-color: var(--bg-light); color: var(--text-light); border: none; border-radius: 6px; cursor: pointer;">2</button>
-                <button type="button" class="btn-pagination page" data-page="3" style="padding: 8px 12px; background-color: var(--bg-light); color: var(--text-light); border: none; border-radius: 6px; cursor: pointer;">3</button>
-                <button type="button" class="btn-pagination next" style="padding: 8px 12px; background-color: var(--primary-lighter); color: var(--primary); border: none; border-radius: 6px; cursor: pointer;">
+                <div class="page-numbers" id="pageNumbers">
+                    <!-- Page numbers will be generated here -->
+                </div>
+                <button type="button" class="btn-pagination next">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -439,11 +432,11 @@
 </div>
 
 <!-- Modal Tambah Gangguan -->
-<div class="modal-overlay" id="gangguanModal" style="display: none;">
-    <div class="modal-content" style="max-width: 500px;">
+<div id="gangguanModal" class="modal">
+    <div class="modal-content">
         <div class="modal-header">
             <h3 class="modal-title">Tambah Gangguan Baru</h3>
-            <button type="button" class="close-gangguan-modal" style="background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 18px;">
+            <button type="button" class="close-gangguan-modal">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -465,18 +458,18 @@
             
             <div class="form-group">
                 <label class="form-label">Tingkat Keparahan</label>
-                <div style="display: flex; gap: 10px;">
-                    <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                <div class="severity-options">
+                    <label class="severity-option">
                         <input type="radio" name="tingkat" value="ringan" checked>
-                        <span style="padding: 5px 10px; background-color: #E8F5E9; color: #2E7D32; border-radius: 4px; font-size: 12px;">Ringan</span>
+                        <span class="severity-badge ringan">Ringan</span>
                     </label>
-                    <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                    <label class="severity-option">
                         <input type="radio" name="tingkat" value="sedang">
-                        <span style="padding: 5px 10px; background-color: #FFF3E0; color: #EF6C00; border-radius: 4px; font-size: 12px;">Sedang</span>
+                        <span class="severity-badge sedang">Sedang</span>
                     </label>
-                    <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                    <label class="severity-option">
                         <input type="radio" name="tingkat" value="berat">
-                        <span style="padding: 5px 10px; background-color: #FFEBEE; color: #C62828; border-radius: 4px; font-size: 12px;">Berat</span>
+                        <span class="severity-badge berat">Berat</span>
                     </label>
                 </div>
             </div>
@@ -487,15 +480,97 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn" id="cancelGangguanBtn">Batal</button>
+            <button type="button" class="btn btn-secondary" id="cancelGangguanBtn">Batal</button>
             <button type="button" class="btn btn-primary" id="saveGangguanBtn">Simpan Gangguan</button>
         </div>
     </div>
 </div>
 
+<!-- Modal Detail Laporan -->
+<div id="reportDetailModal" class="modal">
+    <div class="modal-content modal-lg">
+        <!-- Content will be generated by JavaScript -->
+    </div>
+</div>
+
 <style>
+    /* General Variables */
+    :root {
+        --primary: #2D6A4F;
+        --primary-dark: #1B4332;
+        --primary-light: #95D5B2;
+        --primary-lighter: #D8F3DC;
+        --secondary: #6C757D;
+        --success: #28A745;
+        --info: #17A2B8;
+        --warning: #FFC107;
+        --danger: #DC3545;
+        --light: #F8F9FA;
+        --dark: #212529;
+        --border: #E9ECEF;
+        --text-dark: #212529;
+        --text-light: #6C757D;
+        --transition: all 0.3s ease;
+    }
+    
+    /* Content Header */
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .header-left h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 5px;
+    }
+    
+    .header-left p {
+        color: var(--text-light);
+        font-size: 14px;
+        margin: 0;
+    }
+    
+    .header-right {
+        display: flex;
+        gap: 10px;
+    }
+    
+    /* Content Card */
+    .content-card {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        border: 1px solid var(--border);
+        margin-bottom: 30px;
+    }
+    
+    .card-header {
+        margin-bottom: 25px;
+    }
+    
+    .card-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    
+    .card-title i {
+        color: var(--primary);
+        font-size: 18px;
+    }
+    
     /* Alert Styles */
-    .alert-success, .alert-error {
+    .alert {
         padding: 15px 20px;
         border-radius: 8px;
         margin-bottom: 20px;
@@ -518,26 +593,83 @@
     }
     
     @keyframes slideDown {
-        from { transform: translateY(-20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
     
-    /* Form Controls */
-    .input-wrapper {
-        position: relative;
+    /* Form Styles */
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-bottom: 25px;
     }
     
-    .input-icon {
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text-light);
-        font-size: 16px;
+    @media (max-width: 992px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    .form-section {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 15px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-dark);
+        font-size: 14px;
     }
     
     .form-control {
-        padding-left: 45px !important;
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 14px;
+        color: var(--text-dark);
+        background-color: white;
+        transition: var(--transition);
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
     }
     
     .form-text {
@@ -545,6 +677,32 @@
         margin-top: 5px;
         font-size: 12px;
         color: var(--text-light);
+    }
+    
+    /* Info Card */
+    .info-card {
+        background-color: var(--primary-lighter);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+    
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .info-item .info-label {
+        font-size: 12px;
+        color: var(--text-light);
+        margin-bottom: 2px;
+    }
+    
+    .info-item .info-value {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 13px;
     }
     
     /* Data Source Options */
@@ -567,7 +725,7 @@
         align-items: center;
         gap: 15px;
         padding: 15px;
-        background-color: var(--bg-light);
+        background-color: var(--light);
         border: 2px solid var(--border);
         border-radius: 10px;
         cursor: pointer;
@@ -620,7 +778,7 @@
         border-radius: 20px;
         font-size: 12px;
         font-weight: 600;
-        background-color: var(--bg-light);
+        background-color: var(--light);
         color: var(--text-light);
     }
     
@@ -629,7 +787,126 @@
         color: white;
     }
     
-    /* Gangguan Checkbox */
+    /* Weather Card */
+    .weather-card {
+        background-color: #E3F2FD;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .weather-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+    
+    .weather-icon {
+        font-size: 32px;
+        color: #2196F3;
+    }
+    
+    .weather-title .title {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 16px;
+    }
+    
+    .weather-title .subtitle {
+        font-size: 13px;
+        color: var(--text-light);
+    }
+    
+    .weather-data {
+        font-size: 13px;
+    }
+    
+    .weather-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+    
+    .weather-item .label {
+        color: var(--text-light);
+    }
+    
+    .weather-item .value {
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    
+    .weather-footer {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed #BBDEFB;
+    }
+    
+    /* Input with Unit */
+    .input-with-unit {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .input-with-unit .form-control {
+        flex: 1;
+    }
+    
+    .unit {
+        font-size: 14px;
+        color: var(--text-light);
+        min-width: 40px;
+    }
+    
+    /* Rain Indicator */
+    .rain-indicator {
+        margin-top: 10px;
+    }
+    
+    .indicator-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        font-size: 12px;
+        color: var(--text-light);
+    }
+    
+    .indicator-bar {
+        height: 8px;
+        background: linear-gradient(to right, #4CAF50, #FFEB3B, #FF9800, #F44336);
+        border-radius: 4px;
+        position: relative;
+    }
+    
+    .indicator-marker {
+        position: absolute;
+        top: -4px;
+        width: 16px;
+        height: 16px;
+        background-color: var(--primary);
+        border-radius: 50%;
+        border: 2px solid white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        transform: translateX(-8px);
+    }
+    
+    .indicator-range {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        font-size: 11px;
+    }
+    
+    /* Gangguan Grid */
+    .gangguan-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
     .gangguan-item {
         position: relative;
     }
@@ -668,6 +945,7 @@
         align-items: center;
         justify-content: center;
         font-size: 14px;
+        color: white;
     }
     
     .gangguan-content {
@@ -678,6 +956,7 @@
         font-weight: 600;
         color: var(--text-dark);
         font-size: 14px;
+        margin-bottom: 2px;
     }
     
     .gangguan-desc {
@@ -739,6 +1018,16 @@
         font-size: 12px;
     }
     
+    .photo-preview-container {
+        margin-top: 15px;
+    }
+    
+    .photo-previews {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
     .photo-preview {
         position: relative;
         width: 120px;
@@ -775,38 +1064,337 @@
         background-color: var(--danger);
     }
     
-    /* Table Styles */
-    table {
-        width: 100%;
+    /* Recommendation Card */
+    .recommendation-card {
+        background-color: #FFF3E0;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
     }
     
-    tbody tr {
+    .recommendation-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .recommendation-icon {
+        font-size: 24px;
+        color: #FF9800;
+    }
+    
+    .recommendation-title .title {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 16px;
+    }
+    
+    .recommendation-title .subtitle {
+        font-size: 13px;
+        color: var(--text-light);
+    }
+    
+    .recommendation-content {
+        font-size: 14px;
+        color: #5D4037;
+    }
+    
+    .recommendation-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+    
+    /* Form Actions */
+    .form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    @media (max-width: 576px) {
+        .form-actions {
+            flex-direction: column;
+        }
+    }
+    
+    /* Button Styles */
+    .btn {
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .btn-primary {
+        background-color: var(--primary);
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    .btn-secondary {
+        background-color: var(--secondary);
+        color: white;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+    
+    .btn-success {
+        background-color: var(--success);
+        color: white;
+    }
+    
+    .btn-success:hover {
+        background-color: #218838;
+    }
+    
+    .btn-info {
+        background-color: var(--info);
+        color: white;
+    }
+    
+    .btn-info:hover {
+        background-color: #138496;
+    }
+    
+    .btn-outline {
+        background-color: var(--light);
+        color: var(--text-dark);
+        border: 1px solid var(--border);
+    }
+    
+    .btn-outline:hover {
+        background-color: #E9ECEF;
+    }
+    
+    /* Weather Stats */
+    .weather-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .stat-item {
+        text-align: center;
+        padding: 15px;
+        background-color: var(--light);
+        border-radius: 10px;
+    }
+    
+    .stat-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 5px;
+    }
+    
+    .stat-label {
+        font-size: 13px;
+        color: var(--text-light);
+    }
+    
+    /* Chart Section */
+    .chart-section {
+        margin-top: 25px;
+    }
+    
+    .chart-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .chart-header h4 {
+        margin: 0;
+        color: var(--text-dark);
+        font-size: 16px;
+    }
+    
+    .chart-header i {
+        color: var(--primary);
+    }
+    
+    .rain-chart {
+        height: 200px;
+        display: flex;
+        align-items: flex-end;
+        gap: 15px;
+        padding: 20px;
+        background-color: var(--light);
+        border-radius: 10px;
+    }
+    
+    .chart-bar {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         transition: var(--transition);
     }
     
-    tbody tr:hover {
+    .chart-bar:hover {
+        transform: translateY(-5px);
+    }
+    
+    .chart-bar:hover .bar {
+        opacity: 0.8;
+    }
+    
+    .chart-bar .bar-value {
+        font-size: 12px;
+        color: var(--text-dark);
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+    
+    .chart-bar .bar {
+        width: 80%;
+        background: linear-gradient(to top, #2196F3, #64B5F6);
+        border-radius: 4px 4px 0 0;
+    }
+    
+    .chart-bar .bar-label {
+        font-size: 12px;
+        color: var(--text-light);
+        margin-top: 5px;
+    }
+    
+    /* Table Styles */
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .data-table thead {
+        background-color: var(--light);
+        border-bottom: 2px solid var(--border);
+    }
+    
+    .data-table th {
+        padding: 12px;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 14px;
+    }
+    
+    .data-table td {
+        padding: 12px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .data-table tbody tr {
+        transition: var(--transition);
+    }
+    
+    .data-table tbody tr:hover {
         background-color: var(--primary-lighter);
     }
     
-    /* Pagination */
+    /* Table Footer */
+    .table-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .showing-count {
+        font-size: 14px;
+        color: var(--text-light);
+    }
+    
+    .pagination {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
     .btn-pagination {
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background-color: white;
+        color: var(--text-dark);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         transition: var(--transition);
+    }
+    
+    .btn-pagination:hover:not(:disabled) {
+        background-color: var(--primary-lighter);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+    
+    .btn-pagination:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    .page-numbers {
+        display: flex;
+        gap: 5px;
+    }
+    
+    .page-number {
         min-width: 36px;
-    }
-    
-    .btn-pagination:not(.active):hover {
-        background-color: var(--primary-lighter) !important;
-        color: var(--primary) !important;
-    }
-    
-    /* Bar Chart */
-    .rain-bar {
+        height: 36px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background-color: white;
+        color: var(--text-dark);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
         transition: var(--transition);
     }
     
-    .rain-bar:hover .bar {
-        opacity: 0.8;
-        transform: scaleY(1.05);
+    .page-number:hover {
+        background-color: var(--primary-lighter);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+    
+    .page-number.active {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: white;
     }
     
     /* Action Buttons */
@@ -854,6 +1442,190 @@
     
     .btn-delete:hover {
         background-color: #FFCDD2;
+    }
+    
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    .modal-content {
+        background: white;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: modalFadeIn 0.3s ease;
+    }
+    
+    .modal-lg {
+        max-width: 800px;
+    }
+    
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .modal-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    
+    .close-gangguan-modal {
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: var(--text-light);
+        cursor: pointer;
+        transition: var(--transition);
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .close-gangguan-modal:hover {
+        background-color: var(--light);
+        color: var(--text-dark);
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .modal-footer {
+        padding: 20px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        gap: 10px;
+    }
+    
+    /* Severity Options */
+    .severity-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .severity-option {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    
+    .severity-option input[type="radio"] {
+        display: none;
+    }
+    
+    .severity-badge {
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+    
+    .severity-option input[type="radio"]:checked + .severity-badge {
+        transform: scale(1.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .ringan {
+        background-color: #E8F5E9;
+        color: #2E7D32;
+    }
+    
+    .sedang {
+        background-color: #FFF3E0;
+        color: #EF6C00;
+    }
+    
+    .berat {
+        background-color: #FFEBEE;
+        color: #C62828;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .weather-stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .rain-chart {
+            gap: 10px;
+            padding: 15px;
+        }
+        
+        .chart-bar .bar {
+            width: 90%;
+        }
+        
+        .modal-footer {
+            flex-direction: column;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .content-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .header-right {
+            width: 100%;
+        }
+        
+        .header-right .btn {
+            flex: 1;
+        }
+        
+        .weather-stats {
+            grid-template-columns: 1fr;
+        }
+        
+        .gangguan-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .table-footer {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .pagination {
+            justify-content: center;
+        }
     }
 </style>
 
@@ -1064,6 +1836,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const syncWeatherBtn = document.getElementById('syncWeatherBtn');
     const exportReportBtn = document.getElementById('exportReportBtn');
     const gangguanModal = document.getElementById('gangguanModal');
+    const reportDetailModal = document.getElementById('reportDetailModal');
     
     // State
     let selectedGangguan = [];
@@ -1148,17 +1921,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     function updateRainIndicator(value) {
-        const maxRain = 200; // 200mm max untuk skala
+        const maxRain = 200;
         const percentage = Math.min(value / maxRain * 100, 100);
         rainMarker.style.left = `calc(${percentage}% - 8px)`;
         
-        // Warna marker berdasarkan tingkat
         if (value < 20) {
-            rainMarker.style.backgroundColor = '#4CAF50'; // Hijau (rendah)
+            rainMarker.style.backgroundColor = '#4CAF50';
         } else if (value < 100) {
-            rainMarker.style.backgroundColor = '#FF9800'; // Oranye (sedang)
+            rainMarker.style.backgroundColor = '#FF9800';
         } else {
-            rainMarker.style.backgroundColor = '#F44336'; // Merah (tinggi)
+            rainMarker.style.backgroundColor = '#F44336';
         }
     }
     
@@ -1197,7 +1969,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         recommendationContent.innerHTML = recommendations.map(rec => 
-            `<div style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+            `<div class="recommendation-item">
                 <i class="fas fa-check-circle" style="color: #4CAF50; margin-top: 2px;"></i>
                 <span>${rec}</span>
             </div>`
@@ -1210,7 +1982,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadGangguanList() {
         gangguanList.innerHTML = '';
         
-        // Gabungkan gangguan umum dan custom
         const allGangguan = [...gangguanUmum, ...customGangguan];
         
         allGangguan.forEach(gangguan => {
@@ -1219,7 +1990,7 @@ document.addEventListener('DOMContentLoaded', function() {
             item.innerHTML = `
                 <input type="checkbox" id="gangguan_${gangguan.id}" value="${gangguan.nama}" class="gangguan-checkbox">
                 <label for="gangguan_${gangguan.id}" class="gangguan-label">
-                    <div class="gangguan-icon" style="background-color: ${gangguan.color}; color: white;">
+                    <div class="gangguan-icon" style="background-color: ${gangguan.color}">
                         <i class="${gangguan.icon}"></i>
                     </div>
                     <div class="gangguan-content">
@@ -1234,7 +2005,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             gangguanList.appendChild(item);
             
-            // Add event listener
             const checkbox = item.querySelector('.gangguan-checkbox');
             checkbox.addEventListener('change', function() {
                 if (this.checked) {
@@ -1267,11 +2037,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const deskripsi = document.getElementById('deskripsi_gangguan').value.trim();
         
         if (!nama) {
-            alert('Nama gangguan harus diisi');
+            showError('Nama gangguan harus diisi');
             return;
         }
         
-        // Ikon berdasarkan kategori
         let icon, color;
         switch(kategori) {
             case 'hama':
@@ -1304,11 +2073,10 @@ document.addEventListener('DOMContentLoaded', function() {
         customGangguan.push(newGangguan);
         loadGangguanList();
         
-        // Close modal
         gangguanModal.style.display = 'none';
         document.body.style.overflow = 'auto';
         
-        alert('Gangguan baru berhasil ditambahkan!');
+        showSuccess('Gangguan baru berhasil ditambahkan!');
     });
     
     // Close modal gangguan
@@ -1330,19 +2098,16 @@ document.addEventListener('DOMContentLoaded', function() {
     fotoInput.addEventListener('change', function(e) {
         if (this.files && this.files.length > 0) {
             Array.from(this.files).forEach(file => {
-                // Validasi ukuran file
                 if (file.size > 5 * 1024 * 1024) {
-                    alert(`File ${file.name} terlalu besar. Maksimal 5MB.`);
+                    showError(`File ${file.name} terlalu besar. Maksimal 5MB.`);
                     return;
                 }
                 
-                // Validasi tipe file
                 if (!file.type.match('image.*')) {
-                    alert(`File ${file.name} harus berupa gambar.`);
+                    showError(`File ${file.name} harus berupa gambar.`);
                     return;
                 }
                 
-                // Add to uploaded photos
                 const photoId = Date.now() + Math.random();
                 uploadedPhotos.push({
                     id: photoId,
@@ -1350,7 +2115,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     url: URL.createObjectURL(file)
                 });
                 
-                // Create preview
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const preview = document.createElement('div');
@@ -1366,7 +2130,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     photoPreviews.appendChild(preview);
                     photoPreviewContainer.style.display = 'block';
                     
-                    // Add remove event
                     preview.querySelector('.remove-photo').addEventListener('click', function() {
                         const id = this.dataset.id;
                         uploadedPhotos = uploadedPhotos.filter(p => p.id != id);
@@ -1380,7 +2143,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 reader.readAsDataURL(file);
             });
             
-            // Reset input
             this.value = '';
         }
     });
@@ -1400,15 +2162,12 @@ document.addEventListener('DOMContentLoaded', function() {
             successAlert.style.display = 'none';
             errorAlert.style.display = 'none';
             
-            // Reset gangguan checkboxes
             document.querySelectorAll('.gangguan-checkbox').forEach(cb => {
                 cb.checked = false;
             });
             
-            // Reset sumber data
             sumberManualRadio.checked = true;
             
-            // Reset date
             document.getElementById('tanggal').value = '{{ date('Y-m-d') }}';
             document.getElementById('waktu').value = '{{ date('H:i') }}';
             
@@ -1418,7 +2177,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Simpan draft
     simpanDraftBtn.addEventListener('click', function() {
-        // Simpan ke localStorage
         const formData = {
             ladang_id: ladangSelect.value,
             tanggal: document.getElementById('tanggal').value,
@@ -1431,11 +2189,10 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         localStorage.setItem('weatherDraft', JSON.stringify(formData));
-        
         showSuccess('Draft laporan berhasil disimpan!');
     });
     
-    // Load draft jika ada
+    // Load draft
     function loadDraft() {
         const draft = JSON.parse(localStorage.getItem('weatherDraft'));
         if (draft) {
@@ -1447,13 +2204,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('curah_hujan').value = draft.curah_hujan;
                 document.getElementById('catatan_gangguan').value = draft.catatan_gangguan;
                 
-                // Trigger change events
                 ladangSelect.dispatchEvent(new Event('change'));
                 if (draft.sumber_data === 'api') {
                     sumberApiRadio.dispatchEvent(new Event('change'));
                 }
                 
-                // Set gangguan
                 selectedGangguan = draft.gangguan || [];
                 document.querySelectorAll('.gangguan-checkbox').forEach(cb => {
                     cb.checked = selectedGangguan.includes(cb.value);
@@ -1461,7 +2216,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 updateRainIndicator(parseFloat(draft.curah_hujan) || 0);
                 
-                alert('Draft berhasil dimuat! Terakhir disimpan: ' + new Date(draft.last_saved).toLocaleString());
+                showSuccess('Draft berhasil dimuat! Terakhir disimpan: ' + new Date(draft.last_saved).toLocaleString());
             }
         }
     }
@@ -1473,7 +2228,6 @@ document.addEventListener('DOMContentLoaded', function() {
     weatherForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Validasi
         const errors = [];
         
         if (!ladangSelect.value) {
@@ -1490,7 +2244,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Simpan laporan
         const newReport = {
             id: Date.now(),
             ladang_id: ladangSelect.value,
@@ -1518,36 +2271,26 @@ document.addEventListener('DOMContentLoaded', function() {
         photoPreviews.innerHTML = '';
         recommendationSection.style.display = 'none';
         
-        // Reset gangguan checkboxes
         document.querySelectorAll('.gangguan-checkbox').forEach(cb => {
             cb.checked = false;
         });
         
-        // Reset sumber data
         sumberManualRadio.checked = true;
         
-        // Reset date
         document.getElementById('tanggal').value = '{{ date('Y-m-d') }}';
         document.getElementById('waktu').value = '{{ date('H:i') }}';
         
         updateRainIndicator(0);
         
-        // Update table
         loadReportTable();
-        
-        // Clear localStorage draft
         localStorage.removeItem('weatherDraft');
-        
-        // Show success
         showSuccess(`Laporan cuaca berhasil disimpan! ID: ${newReport.id}`);
-        
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
     // Show success message
     function showSuccess(message) {
-        successMessage.textContent = message;
+        successMessage.innerHTML = message;
         successAlert.style.display = 'flex';
         errorAlert.style.display = 'none';
         
@@ -1558,7 +2301,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Show error message
     function showError(message) {
-        errorMessage.textContent = message;
+        errorMessage.innerHTML = message;
         errorAlert.style.display = 'flex';
         successAlert.style.display = 'none';
         
@@ -1589,7 +2332,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const globalIndex = startIndex + index + 1;
                 const row = document.createElement('tr');
                 
-                // Format tanggal
                 const tanggal = new Date(report.tanggal);
                 const formattedDate = tanggal.toLocaleDateString('id-ID', {
                     day: '2-digit',
@@ -1598,23 +2340,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 row.innerHTML = `
-                    <td style="padding: 12px; color: var(--text-light);">${globalIndex}</td>
-                    <td style="padding: 12px;">
+                    <td style="color: var(--text-light);">${globalIndex}</td>
+                    <td>
                         <div style="font-weight: 600; color: var(--text-dark);">${report.ladang_nama}</div>
                     </td>
-                    <td style="padding: 12px; color: var(--text-light);">${formattedDate}</td>
-                    <td style="padding: 12px;">
+                    <td style="color: var(--text-light);">${formattedDate}</td>
+                    <td>
                         <div style="font-weight: 600; color: ${getRainColor(report.curah_hujan)};">${report.curah_hujan} mm</div>
                     </td>
-                    <td style="padding: 12px; color: var(--text-light); font-size: 13px;">
+                    <td style="color: var(--text-light); font-size: 13px;">
                         ${report.gangguan.slice(0, 2).join(', ')}${report.gangguan.length > 2 ? '...' : ''}
                     </td>
-                    <td style="padding: 12px;">
+                    <td>
                         <span style="padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; background-color: ${report.sumber_data === 'api' ? '#E3F2FD' : '#FFF3E0'}; color: ${report.sumber_data === 'api' ? '#1565C0' : '#EF6C00'};">
                             ${report.sumber_data === 'api' ? 'API' : 'Manual'}
                         </span>
                     </td>
-                    <td style="padding: 12px;">
+                    <td>
                         <div class="action-buttons">
                             <button type="button" class="btn-action btn-view" data-id="${report.id}" title="Lihat Detail">
                                 <i class="fas fa-eye"></i>
@@ -1633,14 +2375,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Update counts
         document.getElementById('showingCount').textContent = pageData.length;
         document.getElementById('totalCount').textContent = weatherReports.length;
         
-        // Update pagination
         updatePagination();
-        
-        // Add event listeners
         addReportActionListeners();
     }
     
@@ -1654,142 +2392,105 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update pagination
     function updatePagination() {
         const totalPages = Math.ceil(weatherReports.length / itemsPerPage);
-        const paginationContainer = document.querySelector('.btn-pagination.page').parentNode;
+        const pageNumbers = document.getElementById('pageNumbers');
+        pageNumbers.innerHTML = '';
         
-        // Clear existing page buttons
-        const existingPages = pagination
-            // Create page buttons
-    for (let i = 1; i <= totalPages; i++) {
-        const pageBtn = document.createElement('button');
-        pageBtn.type = 'button';
-        pageBtn.className = `btn-pagination page ${i === currentPage ? 'active' : ''}`;
-        pageBtn.dataset.page = i;
-        pageBtn.textContent = i;
-        pageBtn.style.padding = '8px 12px';
-        pageBtn.style.backgroundColor = i === currentPage ? 'var(--primary)' : 'var(--bg-light)';
-        pageBtn.style.color = i === currentPage ? 'white' : 'var(--text-light)';
-        pageBtn.style.border = 'none';
-        pageBtn.style.borderRadius = '6px';
-        pageBtn.style.cursor = 'pointer';
+        for (let i = 1; i <= Math.min(totalPages, 5); i++) {
+            const pageNumber = document.createElement('button');
+            pageNumber.type = 'button';
+            pageNumber.className = `page-number ${i === currentPage ? 'active' : ''}`;
+            pageNumber.textContent = i;
+            pageNumber.addEventListener('click', function() {
+                currentPage = i;
+                loadReportTable();
+            });
+            pageNumbers.appendChild(pageNumber);
+        }
         
-        pageBtn.addEventListener('click', function() {
-            currentPage = parseInt(this.dataset.page);
-            loadReportTable();
-        });
+        const prevBtn = document.querySelector('.btn-pagination.prev');
+        const nextBtn = document.querySelector('.btn-pagination.next');
         
-        paginationContainer.insertBefore(pageBtn, document.querySelector('.btn-pagination.next'));
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages;
+        prevBtn.style.opacity = currentPage === 1 ? '0.5' : '1';
+        nextBtn.style.opacity = currentPage === totalPages ? '0.5' : '1';
     }
     
-    // Update prev/next buttons
-    const prevBtn = document.querySelector('.btn-pagination.prev');
-    const nextBtn = document.querySelector('.btn-pagination.next');
-    
-    prevBtn.disabled = currentPage === 1;
-    nextBtn.disabled = currentPage === totalPages;
-    
-    prevBtn.style.opacity = currentPage === 1 ? '0.5' : '1';
-    nextBtn.style.opacity = currentPage === totalPages ? '0.5' : '1';
-}
-
-// Add report action listeners
-function addReportActionListeners() {
-    // View buttons
-    document.querySelectorAll('.btn-action.btn-view').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const reportId = parseInt(this.dataset.id);
-            const report = weatherReports.find(r => r.id === reportId);
-            
-            if (report) {
-                showReportDetail(report);
-            }
+    // Add report action listeners
+    function addReportActionListeners() {
+        document.querySelectorAll('.btn-action.btn-view').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const reportId = parseInt(this.dataset.id);
+                const report = weatherReports.find(r => r.id === reportId);
+                if (report) showReportDetail(report);
+            });
         });
-    });
-    
-    // Edit buttons
-    document.querySelectorAll('.btn-action.btn-edit').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const reportId = parseInt(this.dataset.id);
-            const report = weatherReports.find(r => r.id === reportId);
-            
-            if (report) {
-                editReport(report);
-            }
+        
+        document.querySelectorAll('.btn-action.btn-edit').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const reportId = parseInt(this.dataset.id);
+                const report = weatherReports.find(r => r.id === reportId);
+                if (report) editReport(report);
+            });
         });
-    });
-    
-    // Delete buttons
-    document.querySelectorAll('.btn-action.btn-delete').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const reportId = parseInt(this.dataset.id);
-            
-            if (confirm('Apakah Anda yakin ingin menghapus laporan ini?')) {
-                weatherReports = weatherReports.filter(r => r.id !== reportId);
-                loadReportTable();
-                showSuccess('Laporan berhasil dihapus!');
-            }
+        
+        document.querySelectorAll('.btn-action.btn-delete').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const reportId = parseInt(this.dataset.id);
+                if (confirm('Apakah Anda yakin ingin menghapus laporan ini?')) {
+                    weatherReports = weatherReports.filter(r => r.id !== reportId);
+                    loadReportTable();
+                    showSuccess('Laporan berhasil dihapus!');
+                }
+            });
         });
-    });
-}
-
-// Show report detail
-function showReportDetail(report) {
-    const modal = document.createElement('div');
-    modal.className = 'modal-overlay';
-    modal.style.display = 'flex';
-    modal.style.zIndex = '1000';
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.right = '0';
-    modal.style.bottom = '0';
-    modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
-    modal.style.alignItems = 'center';
-    modal.style.justifyContent = 'center';
-    modal.style.padding = '20px';
+    }
     
-    // Format tanggal
-    const tanggal = new Date(report.tanggal);
-    const formattedDate = tanggal.toLocaleDateString('id-ID', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-    
-    modal.innerHTML = `
-        <div class="modal-content" style="background: white; border-radius: 12px; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto;">
-            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid var(--border);">
-                <h3 style="margin: 0; color: var(--text-dark);">Detail Laporan Cuaca</h3>
-                <button type="button" class="close-modal" style="background: none; border: none; font-size: 20px; color: var(--text-light); cursor: pointer;">
+    // Show report detail
+    function showReportDetail(report) {
+        const modalContent = reportDetailModal.querySelector('.modal-content');
+        
+        const tanggal = new Date(report.tanggal);
+        const formattedDate = tanggal.toLocaleDateString('id-ID', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        modalContent.innerHTML = `
+            <div class="modal-header">
+                <h3 class="modal-title">Detail Laporan Cuaca</h3>
+                <button type="button" class="close-modal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="modal-body" style="padding: 20px;">
-                <div style="margin-bottom: 25px;">
-                    <div style="font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px;">${report.ladang_nama}</div>
-                    <div style="color: var(--text-light); font-size: 14px;">${formattedDate} ${report.waktu !== '00:00' ? '• ' + report.waktu : ''}</div>
+            <div class="modal-body">
+                <div class="report-header">
+                    <div class="report-title">${report.ladang_nama}</div>
+                    <div class="report-date">${formattedDate} ${report.waktu !== '00:00' ? '• ' + report.waktu : ''}</div>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 25px;">
-                    <div style="background-color: var(--bg-light); padding: 15px; border-radius: 8px;">
-                        <div style="color: var(--text-light); font-size: 12px; margin-bottom: 5px;">Curah Hujan</div>
-                        <div style="font-size: 24px; font-weight: 700; color: ${getRainColor(report.curah_hujan)};">${report.curah_hujan} mm</div>
+                <div class="report-stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Curah Hujan</div>
+                        <div class="stat-value" style="color: ${getRainColor(report.curah_hujan)};">${report.curah_hujan} mm</div>
                     </div>
-                    <div style="background-color: var(--bg-light); padding: 15px; border-radius: 8px;">
-                        <div style="color: var(--text-light); font-size: 12px; margin-bottom: 5px;">Sumber Data</div>
-                        <div style="font-size: 24px; font-weight: 700; color: var(--text-dark);">
+                    <div class="stat-card">
+                        <div class="stat-label">Sumber Data</div>
+                        <div class="stat-value">
                             <span style="padding: 4px 12px; border-radius: 20px; font-size: 14px; background-color: ${report.sumber_data === 'api' ? '#E3F2FD' : '#FFF3E0'}; color: ${report.sumber_data === 'api' ? '#1565C0' : '#EF6C00'};">${report.sumber_data === 'api' ? 'API BMKG' : 'Input Manual'}</span>
                         </div>
                     </div>
                 </div>
                 
                 ${report.gangguan.length > 0 ? `
-                <div style="margin-bottom: 25px;">
-                    <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Gangguan yang Dilaporkan</div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <div class="report-section">
+                    <div class="section-title">Gangguan yang Dilaporkan</div>
+                    <div class="gangguan-tags">
                         ${report.gangguan.map(g => `
-                            <span style="padding: 6px 12px; background-color: var(--primary-lighter); color: var(--primary); border-radius: 20px; font-size: 13px;">
-                                <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>${g}
+                            <span class="tag">
+                                <i class="fas fa-exclamation-triangle"></i>${g}
                             </span>
                         `).join('')}
                     </div>
@@ -1797,200 +2498,183 @@ function showReportDetail(report) {
                 ` : ''}
                 
                 ${report.catatan ? `
-                <div style="margin-bottom: 25px;">
-                    <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Catatan</div>
-                    <div style="background-color: var(--bg-light); padding: 15px; border-radius: 8px; font-size: 14px; line-height: 1.6;">
+                <div class="report-section">
+                    <div class="section-title">Catatan</div>
+                    <div class="note-box">
                         ${report.catatan}
                     </div>
                 </div>
                 ` : ''}
                 
                 ${report.foto && report.foto.length > 0 ? `
-                <div style="margin-bottom: 25px;">
-                    <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Foto Dokumentasi</div>
-                    <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px;">
-                        ${report.foto.map(foto => `
-                            <div style="min-width: 150px; height: 150px; border-radius: 8px; overflow: hidden; border: 2px solid var(--border);">
-                                <div style="width: 100%; height: 100%; background-color: var(--bg-light); display: flex; align-items: center; justify-content: center; color: var(--text-light);">
-                                    <i class="fas fa-image" style="font-size: 32px;"></i>
-                                </div>
+                <div class="report-section">
+                    <div class="section-title">Foto Dokumentasi</div>
+                    <div class="photo-grid">
+                        ${report.foto.map((foto, index) => `
+                            <div class="photo-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Foto ${index + 1}</span>
                             </div>
                         `).join('')}
                     </div>
                 </div>
                 ` : ''}
                 
-                <div style="color: var(--text-light); font-size: 12px; text-align: right;">
+                <div class="report-footer">
                     Dibuat: ${new Date(report.created_at).toLocaleString('id-ID')}
                 </div>
             </div>
-            <div class="modal-footer" style="padding: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px;">
-                <button type="button" class="btn btn-print" style="flex: 1; padding: 10px; background-color: var(--bg-light); color: var(--text-dark); border: none; border-radius: 8px; cursor: pointer;">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline btn-print">
                     <i class="fas fa-print"></i> Cetak Laporan
                 </button>
-                <button type="button" class="btn btn-close-modal" style="flex: 1; padding: 10px; background-color: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                <button type="button" class="btn btn-primary btn-close-modal">
                     Tutup
                 </button>
             </div>
-        </div>
-    `;
+        `;
+        
+        reportDetailModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        const closeModal = function() {
+            reportDetailModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+        
+        modalContent.querySelector('.close-modal').addEventListener('click', closeModal);
+        modalContent.querySelector('.btn-close-modal').addEventListener('click', closeModal);
+        reportDetailModal.addEventListener('click', function(e) {
+            if (e.target === reportDetailModal) closeModal();
+        });
+        
+        modalContent.querySelector('.btn-print').addEventListener('click', function() {
+            alert('Fitur cetak akan tersedia segera!');
+        });
+    }
     
-    document.body.appendChild(modal);
-    document.body.style.overflow = 'hidden';
+    // Edit report
+    function editReport(report) {
+        ladangSelect.value = report.ladang_id;
+        document.getElementById('tanggal').value = report.tanggal;
+        document.getElementById('waktu').value = report.waktu;
+        
+        if (report.sumber_data === 'api') {
+            sumberApiRadio.checked = true;
+            sumberApiRadio.dispatchEvent(new Event('change'));
+        } else {
+            sumberManualRadio.checked = true;
+            sumberManualRadio.dispatchEvent(new Event('change'));
+        }
+        
+        document.getElementById('curah_hujan').value = report.curah_hujan;
+        document.getElementById('catatan_gangguan').value = report.catatan || '';
+        
+        selectedGangguan = [...report.gangguan];
+        document.querySelectorAll('.gangguan-checkbox').forEach(cb => {
+            cb.checked = selectedGangguan.includes(cb.value);
+        });
+        
+        ladangSelect.dispatchEvent(new Event('change'));
+        updateRainIndicator(report.curah_hujan);
+        updateRecommendation(report.curah_hujan);
+        
+        weatherReports = weatherReports.filter(r => r.id !== report.id);
+        loadReportTable();
+        
+        document.querySelector('.content-card').scrollIntoView({ behavior: 'smooth' });
+        showSuccess('Laporan dimuat untuk diedit. Silakan perbarui data dan simpan kembali.');
+    }
     
-    // Close modal
-    modal.querySelector('.close-modal').addEventListener('click', closeModal);
-    modal.querySelector('.btn-close-modal').addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
+    // Pagination buttons
+    document.querySelector('.btn-pagination.prev').addEventListener('click', function() {
+        if (currentPage > 1) {
+            currentPage--;
+            loadReportTable();
         }
     });
     
-    // Print button
-    modal.querySelector('.btn-print').addEventListener('click', function() {
-        alert('Fitur cetak akan tersedia segera!');
+    document.querySelector('.btn-pagination.next').addEventListener('click', function() {
+        const totalPages = Math.ceil(weatherReports.length / itemsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            loadReportTable();
+        }
     });
     
-    function closeModal() {
-        document.body.removeChild(modal);
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Edit report
-function editReport(report) {
-    // Isi form dengan data laporan
-    ladangSelect.value = report.ladang_id;
-    document.getElementById('tanggal').value = report.tanggal;
-    document.getElementById('waktu').value = report.waktu;
-    
-    if (report.sumber_data === 'api') {
-        sumberApiRadio.checked = true;
-        sumberApiRadio.dispatchEvent(new Event('change'));
-    } else {
-        sumberManualRadio.checked = true;
-        sumberManualRadio.dispatchEvent(new Event('change'));
-    }
-    
-    document.getElementById('curah_hujan').value = report.curah_hujan;
-    document.getElementById('catatan_gangguan').value = report.catatan || '';
-    
-    // Set gangguan
-    selectedGangguan = [...report.gangguan];
-    document.querySelectorAll('.gangguan-checkbox').forEach(cb => {
-        cb.checked = selectedGangguan.includes(cb.value);
+    // Sync weather button
+    syncWeatherBtn.addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyinkronkan...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+            const newReports = [
+                {
+                    id: Date.now(),
+                    ladang_id: '2',
+                    ladang_nama: 'Ladang Berastagi',
+                    tanggal: '{{ date("Y-m-d") }}',
+                    waktu: '{{ date("H:i") }}',
+                    curah_hujan: 22,
+                    gangguan: ['Hujan Lebat'],
+                    sumber_data: 'api',
+                    catatan: 'Data sinkronisasi otomatis dari BMKG',
+                    foto: [],
+                    created_at: new Date().toISOString()
+                }
+            ];
+            
+            weatherReports = [...newReports, ...weatherReports];
+            loadReportTable();
+            
+            this.innerHTML = '<i class="fas fa-sync-alt"></i> Sync Data Cuaca';
+            this.disabled = false;
+            
+            showSuccess('Data cuaca berhasil disinkronkan! ' + newReports.length + ' laporan baru ditambahkan.');
+        }, 1500);
     });
     
-    // Trigger update
-    ladangSelect.dispatchEvent(new Event('change'));
-    updateRainIndicator(report.curah_hujan);
-    updateRecommendation(report.curah_hujan);
-    
-    // Hapus laporan lama
-    weatherReports = weatherReports.filter(r => r.id !== report.id);
-    
-    // Update tabel
-    loadReportTable();
-    
-    // Scroll ke form
-    document.querySelector('.content-card').scrollIntoView({ behavior: 'smooth' });
-    
-    showSuccess('Laporan dimuat untuk diedit. Silakan perbarui data dan simpan kembali.');
-}
-
-// Pagination prev/next
-document.querySelector('.btn-pagination.prev').addEventListener('click', function() {
-    if (currentPage > 1) {
-        currentPage--;
-        loadReportTable();
-    }
-});
-
-document.querySelector('.btn-pagination.next').addEventListener('click', function() {
-    const totalPages = Math.ceil(weatherReports.length / itemsPerPage);
-    if (currentPage < totalPages) {
-        currentPage++;
-        loadReportTable();
-    }
-});
-
-// Sync weather button
-syncWeatherBtn.addEventListener('click', function() {
-    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyinkronkan...';
-    this.disabled = true;
-    
-    // Simulasi sinkronisasi
-    setTimeout(() => {
-        // Simulasikan update data cuaca terkini
-        const newReports = [
-            {
-                id: Date.now(),
-                ladang_id: '2',
-                ladang_nama: 'Ladang Berastagi',
-                tanggal: '{{ date("Y-m-d") }}',
-                waktu: '{{ date("H:i") }}',
-                curah_hujan: 22,
-                gangguan: ['Hujan Lebat'],
-                sumber_data: 'api',
-                catatan: 'Data sinkronisasi otomatis dari BMKG',
-                foto: [],
-                created_at: new Date().toISOString()
-            }
-        ];
+    // Export report
+    exportReportBtn.addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyiapkan...';
         
-        weatherReports = [...newReports, ...weatherReports];
-        loadReportTable();
-        
-        this.innerHTML = '<i class="fas fa-sync-alt"></i> Sync Data Cuaca';
-        this.disabled = false;
-        
-        showSuccess('Data cuaca berhasil disinkronkan! ' + newReports.length + ' laporan baru ditambahkan.');
-    }, 1500);
-});
-
-// Export report
-exportReportBtn.addEventListener('click', function() {
-    // Simulasi export
-    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyiapkan...';
+        setTimeout(() => {
+            const dataStr = JSON.stringify(weatherReports, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `laporan-cuaca-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            
+            this.innerHTML = '<i class="fas fa-file-export"></i> Export Laporan';
+            showSuccess('Laporan berhasil diexport! File telah didownload.');
+        }, 1000);
+    });
     
-    setTimeout(() => {
-        // Simulasi download
-        const dataStr = JSON.stringify(weatherReports, null, 2);
-        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    // Simulasi data BMKG
+    window.simulateBMKGData = function() {
+        const mockData = {
+            suhu: Math.floor(Math.random() * 10) + 22,
+            kelembaban: Math.floor(Math.random() * 30) + 60,
+            angin: Math.floor(Math.random() * 15) + 5,
+            curah_hujan: Math.floor(Math.random() * 80),
+            kondisi: ['Cerah', 'Berawan', 'Hujan Ringan', 'Hujan Sedang'][Math.floor(Math.random() * 4)]
+        };
         
-        // Simpan sebagai file
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(dataBlob);
-        link.download = `laporan-cuaca-${new Date().toISOString().split('T')[0]}.json`;
-        link.click();
-        
-        this.innerHTML = '<i class="fas fa-file-export"></i> Export Laporan';
-        
-        showSuccess('Laporan berhasil diexport! File telah didownload.');
-    }, 1000);
-});
-
-// Simulasi data BMKG (untuk demo)
-window.simulateBMKGData = function() {
-    const mockData = {
-        suhu: Math.floor(Math.random() * 10) + 22,
-        kelembaban: Math.floor(Math.random() * 30) + 60,
-        angin: Math.floor(Math.random() * 15) + 5,
-        curah_hujan: Math.floor(Math.random() * 80),
-        kondisi: ['Cerah', 'Berawan', 'Hujan Ringan', 'Hujan Sedang'][Math.floor(Math.random() * 4)]
+        if (sumberApiRadio.checked) {
+            document.getElementById('apiSuhu').textContent = mockData.suhu + ' °C';
+            document.getElementById('apiKelembaban').textContent = mockData.kelembaban + ' %';
+            document.getElementById('apiAngin').textContent = mockData.angin + ' km/jam';
+            document.getElementById('apiKondisi').textContent = mockData.kondisi;
+            
+            document.getElementById('curah_hujan').value = mockData.curah_hujan;
+            updateRainIndicator(mockData.curah_hujan);
+            updateRecommendation(mockData.curah_hujan);
+            
+            showSuccess('Data cuaca BMKG berhasil diupdate!');
+        }
     };
-    
-    if (sumberApiRadio.checked) {
-        document.getElementById('apiSuhu').textContent = mockData.suhu + ' °C';
-        document.getElementById('apiKelembaban').textContent = mockData.kelembaban + ' %';
-        document.getElementById('apiAngin').textContent = mockData.angin + ' km/jam';
-        document.getElementById('apiKondisi').textContent = mockData.kondisi;
-        
-        document.getElementById('curah_hujan').value = mockData.curah_hujan;
-        updateRainIndicator(mockData.curah_hujan);
-        updateRecommendation(mockData.curah_hujan);
-        
-        showSuccess('Data cuaca BMKG berhasil diupdate!');
-    }
-};
+});
+</script>
+@endsection

@@ -99,7 +99,7 @@
             <div class="nav-title">Data Master</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.data-ladang') ? 'active' : '' }}">
+                    <a href="{{route('manajer.data-petani')}}" class="nav-link {{ request()->routeIs('manajer.data-petani') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-user"></i></span>
                         <span class="nav-text">Data Petani</span>
                     </a>
