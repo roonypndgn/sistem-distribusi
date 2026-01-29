@@ -36,42 +36,30 @@
             </div>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
             <div class="form-group">
                 <label class="form-label">Cari Nama/No. HP</label>
                 <div class="input-wrapper">
+                    <i class="fas fa-search input-icon"></i>
                     <input type="text" id="searchInput" class="form-control" placeholder="Cari petani...">
                 </div>
             </div>
             
             <div class="form-group">
-                <label class="form-label">Status</label>
-                <select id="filterStatus" class="form-control">
-                    <option value="">Semua Status</option>
-                    <option value="aktif">Aktif</option>
-                    <option value="nonaktif">Non-Aktif</option>
-                    <option value="pensiun">Pensiun</option>
-                </select>
+                <label class="form-label">Cari Alamat</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-map-marker-alt input-icon"></i>
+                    <input type="text" id="searchAlamat" class="form-control" placeholder="Cari alamat...">
+                </div>
             </div>
             
             <div class="form-group">
-                <label class="form-label">Daerah</label>
-                <select id="filterDaerah" class="form-control">
-                    <option value="">Semua Daerah</option>
-                    <option value="berastagi">Berastagi</option>
-                    <option value="simalungun">Simalungun</option>
-                    <option value="karo">Karo</option>
-                    <option value="parapat">Parapat</option>
-                    <option value="sipirok">Sipirok</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Jenis Kelamin</label>
-                <select id="filterGender" class="form-control">
-                    <option value="">Semua</option>
-                    <option value="L">Laki-laki</option>
-                    <option value="P">Perempuan</option>
+                <label class="form-label">Urutkan</label>
+                <select id="sortBy" class="form-control">
+                    <option value="nama_asc">Nama A-Z</option>
+                    <option value="nama_desc">Nama Z-A</option>
+                    <option value="terbaru">Terbaru</option>
+                    <option value="terlama">Terlama</option>
                 </select>
             </div>
         </div>
@@ -100,31 +88,31 @@
         
         <div class="stat-card" style="background: linear-gradient(135deg, #2196F3, #0D47A1);">
             <div class="stat-icon">
-                <i class="fas fa-user-check"></i>
+                <i class="fas fa-phone-alt"></i>
             </div>
             <div class="stat-content">
-                <div class="stat-value" id="petaniAktif">0</div>
-                <div class="stat-label">Petani Aktif</div>
+                <div class="stat-value" id="totalKontak">0</div>
+                <div class="stat-label">Kontak Tersedia</div>
             </div>
         </div>
         
         <div class="stat-card" style="background: linear-gradient(135deg, #FF9800, #EF6C00);">
             <div class="stat-icon">
-                <i class="fas fa-tractor"></i>
+                <i class="fas fa-map-marked-alt"></i>
             </div>
             <div class="stat-content">
-                <div class="stat-value" id="totalLadang">0</div>
-                <div class="stat-label">Total Ladang</div>
+                <div class="stat-value" id="totalAlamat">0</div>
+                <div class="stat-label">Alamat Lengkap</div>
             </div>
         </div>
         
         <div class="stat-card" style="background: linear-gradient(135deg, #9C27B0, #6A1B9A);">
             <div class="stat-icon">
-                <i class="fas fa-map-marker-alt"></i>
+                <i class="fas fa-calendar-alt"></i>
             </div>
             <div class="stat-content">
-                <div class="stat-value" id="totalDaerah">0</div>
-                <div class="stat-label">Daerah</div>
+                <div class="stat-value" id="terbaruCount">0</div>
+                <div class="stat-label">Ditambahkan Bulan Ini</div>
             </div>
         </div>
     </div>
@@ -158,6 +146,7 @@
                         <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">Nama Petani</th>
                         <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">No. Telepon</th>
                         <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">Alamat</th>
+                        <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark);">Tanggal Daftar</th>
                         <th style="padding: 12px; text-align: left; font-weight: 600; color: var(--text-dark); width: 100px;">Aksi</th>
                     </tr>
                 </thead>
@@ -199,7 +188,7 @@
 
 <!-- Modal Tambah/Edit Petani -->
 <div class="modal-overlay" id="petaniModal" style="display: none;">
-    <div class="modal-content" style="max-width: 600px;">
+    <div class="modal-content" style="max-width: 500px;">
         <div class="modal-header">
             <h3 class="modal-title" id="modalTitle">Tambah Petani Baru</h3>
             <button type="button" class="close-modal" style="background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 18px;">
@@ -208,35 +197,38 @@
         </div>
         <div class="modal-body">
             <form id="petaniForm">
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-                    <div class="form-group">
-                        <label class="form-label">Nama Lengkap *</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-user input-icon"></i>
-                            <input type="text" id="nama_petani" name="nama_petani" class="form-control" placeholder="Nama lengkap petani" required>
-                        </div>
+                <div class="form-group">
+                    <label class="form-label">Nama Petani *</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="nama_petani" name="nama_petani" class="form-control" placeholder="Nama lengkap petani" required>
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">No. Telepon *</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-phone input-icon"></i>
-                            <input type="tel" id="no_telepon" name="no_telepon" class="form-control" placeholder="0812-3456-7890" required>
-                        </div>
+                    <small class="form-text">Masukkan nama lengkap petani</small>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">No. Telepon *</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-phone input-icon"></i>
+                        <input type="tel" id="no_telepon" name="no_telepon" class="form-control" placeholder="0812-3456-7890" required>
                     </div>
-                    
-                    <div class="form-group" style="grid-column: span 2;">
-                        <label class="form-label">Alamat Lengkap *</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-home input-icon"></i>
-                            <textarea id="alamat" name="alamat" class="form-control" rows="3" placeholder="Alamat lengkap termasuk RT/RW" required></textarea>
-                        </div>
+                    <small class="form-text">Format: 0812-3456-7890 atau +62812-3456-7890</small>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Alamat Lengkap *</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-home input-icon"></i>
+                        <textarea id="alamat" name="alamat" class="form-control" rows="4" placeholder="Alamat lengkap termasuk RT/RW, Desa, Kecamatan, Kabupaten" required></textarea>
                     </div>
+                    <small class="form-text">Contoh: Jl. Jeruk No. 12, RT 01/RW 02, Desa Sukajadi, Kecamatan Berastagi, Kabupaten Karo</small>
+                </div>
+                
                 <input type="hidden" id="petani_id" name="petani_id" value="">
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn" id="cancelPetaniBtn">Batal</button>
+            <button type="button" class="btn btn-secondary" id="cancelPetaniBtn">Batal</button>
             <button type="button" class="btn btn-primary" id="savePetaniBtn">Simpan Data</button>
         </div>
     </div>
@@ -244,7 +236,7 @@
 
 <!-- Modal Detail Petani -->
 <div class="modal-overlay" id="detailModal" style="display: none;">
-    <div class="modal-content" style="max-width: 700px;">
+    <div class="modal-content" style="max-width: 500px;">
         <div class="modal-header">
             <h3 class="modal-title">Detail Petani</h3>
             <button type="button" class="close-detail-modal" style="background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 18px;">
@@ -257,9 +249,6 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn" id="printDetailBtn">
-                <i class="fas fa-print"></i> Cetak
-            </button>
             <button type="button" class="btn btn-primary" id="closeDetailBtn">Tutup</button>
         </div>
     </div>
@@ -311,48 +300,15 @@
         background-color: var(--primary-lighter);
     }
     
-    .status-badge {
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        display: inline-block;
-    }
-    
-    .status-aktif {
-        background-color: #E8F5E9;
-        color: #2E7D32;
-    }
-    
-    .status-nonaktif {
-        background-color: #FFEBEE;
-        color: #C62828;
-    }
-    
-    .status-pensiun {
-        background-color: #FFF3E0;
-        color: #EF6C00;
-    }
-    
-    .daerah-badge {
-        padding: 3px 8px;
-        margin: 2px;
-        background-color: var(--bg-light);
-        color: var(--text-light);
-        border-radius: 4px;
-        font-size: 11px;
-        display: inline-block;
-    }
-    
     /* Action Buttons */
     .action-buttons {
         display: flex;
-        gap: 5px;
+        gap: 8px;
     }
     
     .btn-action {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         border-radius: 6px;
         border: none;
         cursor: pointer;
@@ -391,16 +347,6 @@
         background-color: #FFCDD2;
     }
     
-    /* Checkbox Styles */
-    .daerah-checkbox {
-        display: none;
-    }
-    
-    .daerah-checkbox:checked + span {
-        background-color: var(--primary) !important;
-        color: white !important;
-    }
-    
     /* Modal Detail */
     .detail-section {
         margin-bottom: 25px;
@@ -420,12 +366,6 @@
         font-weight: 500;
     }
     
-    .detail-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    
     .detail-header {
         display: flex;
         align-items: center;
@@ -436,27 +376,28 @@
     }
     
     .detail-avatar {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         background-color: var(--primary);
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 600;
     }
     
     .detail-info h3 {
         margin: 0;
         color: var(--text-dark);
-        font-size: 24px;
+        font-size: 22px;
     }
     
     .detail-info p {
         margin: 5px 0 0;
         color: var(--text-light);
+        font-size: 14px;
     }
     
     /* Pagination */
@@ -512,6 +453,43 @@
         from { transform: translateY(-20px); opacity: 0; }
         to { transform: translateY(0); opacity: 1; }
     }
+    
+    /* Form Controls */
+    .input-wrapper {
+        position: relative;
+    }
+    
+    .input-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+        font-size: 16px;
+        z-index: 1;
+    }
+    
+    .form-control {
+        padding-left: 45px !important;
+    }
+    
+    .form-text {
+        display: block;
+        margin-top: 5px;
+        font-size: 12px;
+        color: var(--text-light);
+    }
+    
+    /* Phone number formatting */
+    .phone-display {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .phone-icon {
+        color: var(--primary);
+    }
 </style>
 
 <script>
@@ -522,38 +500,41 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 1,
             nama: 'Tuan Sitorus',
             no_telepon: '081234567890',
-            alamat: 'Jl. Perkebunan No. 123, RT 01/RW 02'
-            
+            alamat: 'Jl. Perkebunan No. 123, RT 01/RW 02, Desa Gundaling, Kec. Berastagi, Kab. Karo',
+            tanggal_daftar: '2024-03-15',
+            created_at: '2024-03-15 10:00:00'
         },
         {
             id: 2,
             nama: 'Budi Santoso',
             no_telepon: '082345678901',
-            alamat: 'Jl. Jeruk Manis No. 45, Simpang Empat'
+            alamat: 'Jl. Jeruk Manis No. 45, Simpang Empat, Berastagi Kota, Kec. Berastagi, Kab. Karo',
+            tanggal_daftar: '2024-03-14',
+            created_at: '2024-03-14 14:30:00'
         },
         {
             id: 3,
             nama: 'Siti Aminah',
             no_telepon: '083456789012',
-            alamat: 'Komplek Tani Sejahtera Blok B No. 8'
+            alamat: 'Komplek Tani Sejahtera Blok B No. 8, Desa Parapat, Kec. Girsang, Kab. Simalungun',
+            tanggal_daftar: '2024-03-13',
+            created_at: '2024-03-13 09:15:00'
         },
         {
             id: 4,
             nama: 'Joko Widodo',
             no_telepon: '084567890123',
-            alamat: 'Dusun Sipirok, Desa Huta Ginjang'
+            alamat: 'Dusun Sipirok, Desa Huta Ginjang, Kec. Sipirok, Kab. Toba',
+            tanggal_daftar: '2024-03-12',
+            created_at: '2024-03-12 11:45:00'
         },
         {
             id: 5,
             nama: 'Rudi Hartono',
             no_telepon: '085678901234',
-            alamat: 'Jl. Karo No. 88, Lingkungan III'
-        },
-        {
-            id: 6,
-            nama: 'Maya Sari',
-            no_telepon: '086789012345',
-            alamat: 'Jl. Simalungun Indah No. 12'
+            alamat: 'Jl. Karo No. 88, Lingkungan III, Kabanjahe, Kec. Kabanjahe, Kab. Karo',
+            tanggal_daftar: '2024-03-11',
+            created_at: '2024-03-11 16:20:00'
         }
     ];
     
@@ -561,6 +542,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterSection = document.getElementById('filterSection');
     const filterBtn = document.getElementById('filterBtn');
     const searchInput = document.getElementById('searchInput');
+    const searchAlamat = document.getElementById('searchAlamat');
+    const sortBy = document.getElementById('sortBy');
     const resetFilterBtn = document.getElementById('resetFilterBtn');
     const applyFilterBtn = document.getElementById('applyFilterBtn');
     const tambahPetaniBtn = document.getElementById('tambahPetaniBtn');
@@ -580,6 +563,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Stat elements
     const totalPetani = document.getElementById('totalPetani');
+    const totalKontak = document.getElementById('totalKontak');
+    const totalAlamat = document.getElementById('totalAlamat');
+    const terbaruCount = document.getElementById('terbaruCount');
     
     // State
     let currentPage = 1;
@@ -608,9 +594,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reset filter
     resetFilterBtn.addEventListener('click', function() {
         searchInput.value = '';
-        filterStatus.value = '';
-        filterDaerah.value = '';
-        filterGender.value = '';
+        searchAlamat.value = '';
+        sortBy.value = 'terbaru';
         applyFilters();
     });
     
@@ -619,38 +604,46 @@ document.addEventListener('DOMContentLoaded', function() {
         applyFilters();
     });
     
+    searchAlamat.addEventListener('input', function() {
+        applyFilters();
+    });
+    
     // Apply filters function
     function applyFilters() {
         filteredData = [...petaniData];
         
-        // Search filter
+        // Search by name/phone
         const searchTerm = searchInput.value.toLowerCase();
         if (searchTerm) {
             filteredData = filteredData.filter(petani => 
                 petani.nama.toLowerCase().includes(searchTerm) ||
-                petani.no_telepon.includes(searchTerm) ||
-                petani.nik?.includes(searchTerm)
+                petani.no_telepon.includes(searchTerm)
             );
         }
         
-        // Status filter
-        const statusFilter = filterStatus.value;
-        if (statusFilter) {
-            filteredData = filteredData.filter(petani => petani.status === statusFilter);
-        }
-        
-        // Daerah filter
-        const daerahFilter = filterDaerah.value;
-        if (daerahFilter) {
+        // Search by address
+        const alamatTerm = searchAlamat.value.toLowerCase();
+        if (alamatTerm) {
             filteredData = filteredData.filter(petani => 
-                petani.daerah.includes(daerahFilter)
+                petani.alamat.toLowerCase().includes(alamatTerm)
             );
         }
         
-        // Gender filter
-        const genderFilter = filterGender.value;
-        if (genderFilter) {
-            filteredData = filteredData.filter(petani => petani.jenis_kelamin === genderFilter);
+        // Sort data
+        const sortValue = sortBy.value;
+        switch(sortValue) {
+            case 'nama_asc':
+                filteredData.sort((a, b) => a.nama.localeCompare(b.nama));
+                break;
+            case 'nama_desc':
+                filteredData.sort((a, b) => b.nama.localeCompare(a.nama));
+                break;
+            case 'terbaru':
+                filteredData.sort((a, b) => new Date(b.tanggal_daftar) - new Date(a.tanggal_daftar));
+                break;
+            case 'terlama':
+                filteredData.sort((a, b) => new Date(a.tanggal_daftar) - new Date(b.tanggal_daftar));
+                break;
         }
         
         currentPage = 1;
@@ -667,16 +660,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modalTitle').textContent = 'Tambah Petani Baru';
         document.getElementById('petaniForm').reset();
         document.getElementById('petani_id').value = '';
-        document.getElementById('provinsi').value = 'Sumatera Utara';
-        document.getElementById('tanggal_bergabung').value = new Date().toISOString().split('T')[0];
-        
-        // Reset radio buttons
-        document.querySelector('input[name="jenis_kelamin"][value="L"]').checked = true;
-        
-        // Reset checkboxes
-        document.querySelectorAll('.daerah-checkbox').forEach(cb => {
-            cb.checked = false;
-        });
         
         petaniModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -706,16 +689,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // Validation
         const errors = [];
         
-        if (!document.getElementById('nama_petani').value.trim()) {
+        const nama = document.getElementById('nama_petani').value.trim();
+        const noTelepon = document.getElementById('no_telepon').value.trim();
+        const alamat = document.getElementById('alamat').value.trim();
+        
+        if (!nama) {
             errors.push('Nama petani harus diisi');
         }
         
-        if (!document.getElementById('no_telepon').value.trim()) {
+        if (!noTelepon) {
             errors.push('Nomor telepon harus diisi');
+        } else if (!isValidPhoneNumber(noTelepon)) {
+            errors.push('Format nomor telepon tidak valid');
         }
         
-        if (!document.getElementById('alamat').value.trim()) {
+        if (!alamat) {
             errors.push('Alamat harus diisi');
+        } else if (alamat.length < 10) {
+            errors.push('Alamat terlalu pendek, mohon isi alamat lengkap');
         }
         
         if (errors.length > 0) {
@@ -723,12 +714,17 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        // Format phone number
+        const formattedPhone = formatPhoneNumber(noTelepon);
+        
         // Get form data
         const formData = {
             id: isEditing ? currentPetaniId : Date.now(),
-            nama: document.getElementById('nama_petani').value.trim(),
-            no_telepon: document.getElementById('no_telepon').value.trim(),
-            alamat: document.getElementById('alamat').value.trim()
+            nama: nama,
+            no_telepon: formattedPhone,
+            alamat: alamat,
+            tanggal_daftar: isEditing ? petaniData.find(p => p.id === currentPetaniId)?.tanggal_daftar : new Date().toISOString().split('T')[0],
+            created_at: isEditing ? petaniData.find(p => p.id === currentPetaniId)?.created_at : new Date().toISOString()
         };
         
         if (isEditing) {
@@ -751,6 +747,53 @@ document.addEventListener('DOMContentLoaded', function() {
         // Refresh table
         applyFilters();
     });
+    
+    // Phone number validation
+    function isValidPhoneNumber(phone) {
+        // Remove all non-digit characters
+        const cleaned = phone.replace(/\D/g, '');
+        // Check if length is between 10-14 digits
+        return cleaned.length >= 10 && cleaned.length <= 14;
+    }
+    
+    // Format phone number
+    function formatPhoneNumber(phone) {
+        // Remove all non-digit characters
+        let cleaned = phone.replace(/\D/g, '');
+        
+        // If starts with 0, convert to 62
+        if (cleaned.startsWith('0')) {
+            cleaned = '62' + cleaned.substring(1);
+        }
+        
+        // If starts with 8, add 62
+        if (cleaned.startsWith('8')) {
+            cleaned = '62' + cleaned;
+        }
+        
+        // Format: 62-812-3456-7890
+        if (cleaned.length === 12) {
+            return cleaned.replace(/(\d{2})(\d{3})(\d{4})(\d{3})/, '$1-$2-$3-$4');
+        }
+        
+        // Format: 62-812-3456-789
+        if (cleaned.length === 11) {
+            return cleaned.replace(/(\d{2})(\d{3})(\d{4})(\d{2})/, '$1-$2-$3-$4');
+        }
+        
+        return cleaned;
+    }
+    
+    // Format phone for display
+    function formatPhoneForDisplay(phone) {
+        const cleaned = phone.replace(/\D/g, '');
+        
+        if (cleaned.startsWith('62')) {
+            return '0' + cleaned.substring(2);
+        }
+        
+        return phone;
+    }
     
     // Close modal
     cancelPetaniBtn.addEventListener('click', function() {
@@ -784,42 +827,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.className = 'petani-row';
                 
                 // Format alamat singkat
-                const alamatSingkat = petani.alamat.length > 50 ? 
-                    petani.alamat.substring(0, 50) + '...' : petani.alamat;
+                const alamatSingkat = petani.alamat.length > 60 ? 
+                    petani.alamat.substring(0, 60) + '...' : petani.alamat;
                 
-                // Status badge
-                let statusClass = '';
-                let statusText = '';
-                switch(petani.status) {
-                    case 'aktif':
-                        statusClass = 'status-aktif';
-                        statusText = 'Aktif';
-                        break;
-                    case 'nonaktif':
-                        statusClass = 'status-nonaktif';
-                        statusText = 'Non-Aktif';
-                        break;
-                    case 'pensiun':
-                        statusClass = 'status-pensiun';
-                        statusText = 'Pensiun';
-                        break;
-                }
+                // Format tanggal
+                const tanggal = new Date(petani.tanggal_daftar);
+                const formattedDate = tanggal.toLocaleDateString('id-ID', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                });
                 
-                // Daerah badges
-                const daerahBadges = petani.daerah.map(d => 
-                    `<span class="daerah-badge">${d.charAt(0).toUpperCase() + d.slice(1)}</span>`
-                ).join('');
+                // Format phone for display
+                const phoneDisplay = formatPhoneForDisplay(petani.no_telepon);
                 
                 row.innerHTML = `
                     <td style="padding: 12px; color: var(--text-light);">${globalIndex}</td>
                     <td style="padding: 12px;">
                         <div style="font-weight: 600; color: var(--text-dark);">${petani.nama}</div>
                     </td>
-                    <td style="padding: 12px; color: var(--text-dark);">
-                        <div>${petani.no_telepon}</div>
+                    <td style="padding: 12px;">
+                        <div class="phone-display">
+                            <i class="fas fa-phone phone-icon"></i>
+                            <span style="color: var(--text-dark);">${phoneDisplay}</span>
+                        </div>
                     </td>
                     <td style="padding: 12px; color: var(--text-light); font-size: 14px;">
                         ${alamatSingkat}
+                    </td>
+                    <td style="padding: 12px; color: var(--text-light); font-size: 14px;">
+                        ${formattedDate}
                     </td>
                     <td style="padding: 12px;">
                         <div class="action-buttons">
@@ -884,21 +921,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!petani) return;
         
         // Format tanggal
-        const tanggalBergabung = new Date(petani.tanggal_bergabung);
-        const formattedDate = tanggalBergabung.toLocaleDateString('id-ID', {
+        const tanggalDaftar = new Date(petani.tanggal_daftar);
+        const formattedDate = tanggalDaftar.toLocaleDateString('id-ID', {
             weekday: 'long',
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
         
-        // Jenis kelamin
-        const jenisKelamin = petani.jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan';
-        
-        // Daerah
-        const daerahList = petani.daerah.map(d => 
-            `<span class="daerah-badge" style="background-color: var(--primary-lighter); color: var(--primary);">${d.charAt(0).toUpperCase() + d.slice(1)}</span>`
-        ).join('');
+        // Format phone for display
+        const phoneDisplay = formatPhoneForDisplay(petani.no_telepon);
         
         // Initial name for avatar
         const initials = petani.nama.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
@@ -910,62 +942,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="detail-info">
                     <h3>${petani.nama}</h3>
-                    <p>${petani.status === 'aktif' ? 'Petani Aktif' : 'Petani ' + petani.status.charAt(0).toUpperCase() + petani.status.slice(1)}</p>
+                    <p>Petani Mitra</p>
                 </div>
             </div>
             
-            <div class="detail-grid">
-                <div class="detail-section">
-                    <div class="detail-label">Informasi Pribadi</div>
-                    <div class="detail-value">${petani.nik || 'Tidak tersedia'}</div>
-                    <div style="font-size: 14px; color: var(--text-light); margin-top: 5px;">NIK</div>
-                </div>
-                
-                <div class="detail-section">
-                    <div class="detail-label">Jenis Kelamin</div>
-                    <div class="detail-value">${jenisKelamin}</div>
-                </div>
-                
-                <div class="detail-section">
-                    <div class="detail-label">Kontak</div>
-                    <div class="detail-value">${petani.no_telepon}</div>
-                    ${petani.email ? `<div style="font-size: 14px; color: var(--primary); margin-top: 5px;">${petani.email}</div>` : ''}
-                </div>
-                
-                <div class="detail-section">
-                    <div class="detail-label">Tanggal Bergabung</div>
-                    <div class="detail-value">${formattedDate}</div>
+            <div class="detail-section">
+                <div class="detail-label">No. Telepon</div>
+                <div class="detail-value" style="color: var(--primary); font-size: 18px;">
+                    <i class="fas fa-phone" style="margin-right: 10px;"></i>${phoneDisplay}
                 </div>
             </div>
             
             <div class="detail-section">
                 <div class="detail-label">Alamat Lengkap</div>
-                <div class="detail-value">${petani.alamat}</div>
-                <div style="font-size: 14px; color: var(--text-dark); margin-top: 5px;">
-                    ${petani.desa ? petani.desa + ', ' : ''}${petani.kecamatan ? petani.kecamatan + ', ' : ''}${petani.kabupaten}, ${petani.provinsi}
+                <div class="detail-value" style="line-height: 1.6;">
+                    ${petani.alamat.replace(/,/g, '<br>')}
                 </div>
             </div>
             
             <div class="detail-section">
-                <div class="detail-label">Daerah Ladang</div>
-                <div style="margin-top: 5px;">
-                    ${daerahList}
-                </div>
+                <div class="detail-label">Tanggal Daftar</div>
+                <div class="detail-value">${formattedDate}</div>
             </div>
-            
-            <div class="detail-section">
-                <div class="detail-label">Jumlah Ladang</div>
-                <div class="detail-value" style="font-size: 24px; color: var(--primary);">${petani.jumlah_ladang} Ladang</div>
-            </div>
-            
-            ${petani.catatan ? `
-            <div class="detail-section">
-                <div class="detail-label">Catatan</div>
-                <div style="background-color: var(--bg-light); padding: 15px; border-radius: 8px; font-size: 14px; line-height: 1.6;">
-                    ${petani.catatan}
-                </div>
-            </div>
-            ` : ''}
         `;
         
         document.getElementById('detailContent').innerHTML = detailHTML;
@@ -1055,17 +1053,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update stats
     function updateStats() {
         const total = petaniData.length;
-        const aktif = petaniData.filter(p => p.status === 'aktif').length;
-        const totalLadangCount = petaniData.reduce((sum, p) => sum + (p.jumlah_ladang || 0), 0);
+        const kontak = petaniData.filter(p => p.no_telepon && p.no_telepon.trim() !== '').length;
+        const alamatLengkap = petaniData.filter(p => p.alamat && p.alamat.length > 20).length;
         
-        // Count unique daerah
-        const daerahSet = new Set();
-        petaniData.forEach(p => p.daerah.forEach(d => daerahSet.add(d)));
+        // Count petani added this month
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+        const terbaru = petaniData.filter(p => {
+            const date = new Date(p.tanggal_daftar);
+            return date.getMonth() === currentMonth && date.getFullYear() === currentYear;
+        }).length;
         
         totalPetani.textContent = total;
-        petaniAktif.textContent = aktif;
-        totalLadang.textContent = totalLadangCount;
-        totalDaerah.textContent = daerahSet.size;
+        totalKontak.textContent = kontak;
+        totalAlamat.textContent = alamatLengkap;
+        terbaruCount.textContent = terbaru;
     }
     
     // Export to Excel
@@ -1074,25 +1076,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         setTimeout(() => {
             // Create CSV content
-            let csv = 'Nama,NIK,No Telepon,Email,Jenis Kelamin,Alamat,Desa,Kecamatan,Kabupaten,Provinsi,Daerah,Status,Tanggal Bergabung,Jumlah Ladang,Catatan\n';
+            let csv = 'Nama,No Telepon,Alamat,Tanggal Daftar\n';
             
             petaniData.forEach(petani => {
                 const row = [
                     `"${petani.nama}"`,
-                    `"${petani.nik || ''}"`,
-                    `"${petani.no_telepon}"`,
-                    `"${petani.email || ''}"`,
-                    `"${petani.jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan'}"`,
+                    `"${formatPhoneForDisplay(petani.no_telepon)}"`,
                     `"${petani.alamat}"`,
-                    `"${petani.desa || ''}"`,
-                    `"${petani.kecamatan || ''}"`,
-                    `"${petani.kabupaten}"`,
-                    `"${petani.provinsi}"`,
-                    `"${petani.daerah.join(', ')}"`,
-                    `"${petani.status}"`,
-                    `"${petani.tanggal_bergabung}"`,
-                    `"${petani.jumlah_ladang}"`,
-                    `"${petani.catatan || ''}"`
+                    `"${petani.tanggal_daftar}"`
                 ];
                 csv += row.join(',') + '\n';
             });
@@ -1108,11 +1099,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             showSuccess('Data petani berhasil diexport ke file CSV!');
         }, 1000);
-    });
-    
-    // Print detail
-    document.getElementById('printDetailBtn').addEventListener('click', function() {
-        alert('Fitur cetak akan tersedia segera!');
     });
     
     // Show success message
@@ -1139,20 +1125,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize with some data
     window.addEventListener('load', function() {
-        // Simulate loading
-        setTimeout(() => {
-            loadPetaniTable();
-            updateStats();
-        }, 500);
+        // Set default sort to newest
+        sortBy.value = 'terbaru';
+        applyFilters();
+        
+        // Add click event to table headers for sorting
+        document.querySelectorAll('thead th').forEach((th, index) => {
+            if (index !== 0 && index !== 5) { // Skip No and Aksi columns
+                th.style.cursor = 'pointer';
+                th.addEventListener('click', function() {
+                    const columnName = this.textContent.trim();
+                    sortTable(columnName);
+                });
+            }
+        });
     });
+    
+    // Sort table by column
+    function sortTable(columnName) {
+        switch(columnName) {
+            case 'Nama Petani':
+                sortBy.value = sortBy.value === 'nama_asc' ? 'nama_desc' : 'nama_asc';
+                break;
+            case 'Tanggal Daftar':
+                sortBy.value = sortBy.value === 'terbaru' ? 'terlama' : 'terbaru';
+                break;
+        }
+        applyFilters();
+    }
 });
 </script>
 @endsection
 
 @section('styles')
-<!-- Additional styles can be added here -->
 @endsection
 
 @section('scripts')
-<!-- Additional scripts can be added here -->
 @endsection

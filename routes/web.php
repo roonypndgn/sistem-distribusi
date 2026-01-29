@@ -9,6 +9,7 @@ use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\StatusDistribusiController;
 use App\Http\Controllers\CuacaController;
 use App\Http\Controllers\PetaniController;
+use App\Http\Controllers\LadangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/status-distribusi',[StatusDistribusiController::class, 'dataStatus'])->name('manajer.status-distribusi');
         Route::get('/laporan-cuaca',[CuacaController::class, 'dataCuaca'])->name('manajer.laporan-cuaca');
         Route::get('/data-petani',[PetaniController::class, 'dataPetani'])->name('manajer.data-petani');
+        Route::get('/data-ladang',[LadangController::class, 'dataLadang'])->name('manajer.data-ladang');
         
     });
 });

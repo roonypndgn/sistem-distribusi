@@ -105,7 +105,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.data-ladang') ? 'active' : '' }}">
+                    <a href="{{(route('manajer.data-ladang'))}}" class="nav-link {{ request()->routeIs('manajer.data-ladang') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-leaf"></i></span>
                         <span class="nav-text">Data Ladang</span>
                     </a>

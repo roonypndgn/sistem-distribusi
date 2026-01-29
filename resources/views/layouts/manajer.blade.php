@@ -924,7 +924,7 @@
                 <h3 class="modal-title">Konfirmasi Logout</h3>
             </div>
             <div class="modal-body">
-                <p>Apakah Anda yakin ingin keluar dari sistem?</p>
+                <p>Apakah Anda yakin ingin keluar dari website?</p>
             </div>
             <div class="modal-footer">
                 <button class="btn" id="cancelLogout">Batal</button>
