@@ -79,19 +79,14 @@
             <div class="nav-title">Update & Monitoring</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.status-distribusi') ? 'active' : '' }}">
+                    <a href="{{route('manajer.status-distribusi')}}" class="nav-link {{ request()->routeIs('manajer.status-distribusi') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-sync-alt"></i></span>
                         <span class="nav-text">Update Status Distribusi</span>
                     </a>
                 </li>
+                
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.upload-bukti') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-camera"></i></span>
-                        <span class="nav-text">Upload Bukti Transaksi</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.laporan-cuaca') ? 'active' : '' }}">
+                    <a href="{{route('manajer.laporan-cuaca')}}" class="nav-link {{ request()->routeIs('manajer.laporan-cuaca') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-cloud-sun"></i></span>
                         <span class="nav-text">Laporan Cuaca Lapangan</span>
                     </a>
@@ -104,15 +99,15 @@
             <div class="nav-title">Data Master</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.data-petani') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-user-tie"></i></span>
-                        <span class="nav-text">Data Petani & Ladang</span>
+                    <a href="#" class="nav-link {{ request()->routeIs('manajer.data-ladang') ? 'active' : '' }}">
+                        <span class="nav-icon"><i class="fas fa-user"></i></span>
+                        <span class="nav-text">Data Petani</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.rekap-harian') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-file-contract"></i></span>
-                        <span class="nav-text">Rekap Harian Kegiatan</span>
+                    <a href="#" class="nav-link {{ request()->routeIs('manajer.data-ladang') ? 'active' : '' }}">
+                        <span class="nav-icon"><i class="fas fa-leaf"></i></span>
+                        <span class="nav-text">Data Ladang</span>
                     </a>
                 </li>
             </ul>

@@ -6,6 +6,8 @@ use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PanenController;
 use App\Http\Controllers\PengemasanController;
 use App\Http\Controllers\PengirimanController;
+use App\Http\Controllers\StatusDistribusiController;
+use App\Http\Controllers\CuacaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +71,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/data-panen',[PanenController::class, 'dataPanen'])->name('manajer.data-panen');
         Route::get('/data-pengemasan',[PengemasanController::class, 'dataPengemasan'])->name('manajer.data-pengemasan');
         Route::get('/data-pengiriman',[PengirimanController::class, 'dataPengiriman'])->name('manajer.data-pengiriman');
+        Route::get('/status-distribusi',[StatusDistribusiController::class, 'dataStatus'])->name('manajer.status-distribusi');
+        Route::get('/laporan-cuaca',[CuacaController::class, 'dataCuaca'])->name('manajer.laporan-cuaca');
         
     });
 });
