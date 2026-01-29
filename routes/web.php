@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ManajerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/supir', function () {
         return view('dashboard.supir');
     })->name('dashboard.supir')->middleware('checkRole:supir');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('manajer')->group(function () {
+        Route::get('/harga-pembelian', [ManajerController::class, 'hargaPembelian'])->name('manajer.harga-pembelian');
+        Route::post('/harga-pembelian', [ManajerController::class, 'simpanHargaPembelian'])->name('manajer.simpan-harga-pembelian');
+    });
 });
 
 // Forgot password (opsional)

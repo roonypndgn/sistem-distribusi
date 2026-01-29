@@ -44,7 +44,7 @@
             <div class="nav-title">Input Data Operasional</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.harga-pembelian') ? 'active' : '' }}">
+                    <a href="{{route('manajer.harga-pembelian')}}" class="nav-link {{ request()->routeIs('manajer.harga-pembelian') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
                         <span class="nav-text">Input Harga Pembelian</span>
                         <span class="input-badge">3</span>
