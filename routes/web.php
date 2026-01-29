@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ManajerController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PanenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,8 +62,9 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware(['auth'])->group(function () {
     Route::prefix('manajer')->group(function () {
-        Route::get('/harga-pembelian', [ManajerController::class, 'hargaPembelian'])->name('manajer.harga-pembelian');
-        Route::post('/harga-pembelian', [ManajerController::class, 'simpanHargaPembelian'])->name('manajer.simpan-harga-pembelian');
+        Route::get('/harga-pembelian', [PembelianController::class, 'hargaPembelian'])->name('manajer.harga-pembelian');
+        Route::post('/harga-pembelian', [PembelianController::class, 'simpanHargaPembelian'])->name('manajer.simpan-harga-pembelian');
+        Route::get('/data-panen',[PanenController::class, 'dataPanen'])->name('manajer.data-panen');
     });
 });
 

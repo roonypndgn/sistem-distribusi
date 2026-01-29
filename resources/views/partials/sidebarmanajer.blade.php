@@ -51,14 +51,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.data-panen') ? 'active' : '' }}">
+                    <a href="{{route('manajer.data-panen')}}" class="nav-link {{ request()->routeIs('manajer.data-panen') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-seedling"></i></span>
                         <span class="nav-text">Input Data Panen</span>
                         <span class="input-badge">5</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('manajer.data-pengemasan') ? 'active' : '' }}">
+                    <a href="{{route('manajer.data-pengemasan')}}" class="nav-link {{ request()->routeIs('manajer.data-pengemasan') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-box"></i></span>
                         <span class="nav-text">Input Data Pengemasan</span>
                         <span class="input-badge">2</span>

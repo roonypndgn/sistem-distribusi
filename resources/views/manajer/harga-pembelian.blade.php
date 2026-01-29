@@ -41,36 +41,19 @@
                 <small class="form-text">Format: DD-MM-YYYY</small>
             </div>
             
-            <!-- Nama Petani -->
+            <!-- Ladang -->
             <div class="form-group">
-                <label class="form-label">Nama Petani *</label>
+                <label class="form-label">Ladang *</label>
                 <div class="input-wrapper">
-                    <i class="fas fa-user-tie input-icon"></i>
-                    <input type="text" id="nama_petani" name="nama_petani" class="form-control" 
-                           placeholder="Contoh: Tuan Sitorus" required>
+                    <i class="fas fa-leaf input-icon"></i>
+                    <select id="kualitas" name="kualitas" class="form-control" required>
+                        <option value="">-- Pilih Ladang --</option>
+                        <option value="Pending">Ladang Pandiangan</option>
+                        <option value="Verifikasi">Ladang Siregar</option>
+                        <option value="Reject">Ladang Silalahi</option>
+                    </select>
                 </div>
             </div>
-            
-            <!-- Alamat Petani -->
-            <div class="form-group">
-                <label class="form-label">Alamat Petani *</label>
-                <div class="input-wrapper">
-                    <i class="fas fa-map-marker-alt input-icon"></i>
-                    <input type="text" id="alamat_petani" name="alamat_petani" class="form-control" 
-                           placeholder="Contoh: Jl. Jeruk No. 12, Berastagi" required>
-                </div>
-            </div>
-            
-            <!-- Nama Ladang -->
-            <div class="form-group">
-                <label class="form-label">Nama Ladang *</label>
-                <div class="input-wrapper">
-                    <i class="fas fa-tractor input-icon"></i>
-                    <input type="text" id="nama_ladang" name="nama_ladang" class="form-control" 
-                           placeholder="Contoh: Ladang Simalungun" required>
-                </div>
-            </div>
-            
             <!-- Harga per Kg -->
             <div class="form-group">
                 <label class="form-label">Harga per Kg (Rp) *</label>
@@ -103,45 +86,19 @@
                 </div>
             </div>
             
-            <!-- Kualitas Jeruk -->
+            <!-- Status Verifikasi -->
             <div class="form-group">
-                <label class="form-label">Kualitas Jeruk *</label>
+                <label class="form-label">Status Verifikasi *</label>
                 <div class="input-wrapper">
-                    <i class="fas fa-star input-icon"></i>
+                    <i class="fas fa-check input-icon"></i>
                     <select id="kualitas" name="kualitas" class="form-control" required>
-                        <option value="">-- Pilih Kualitas --</option>
-                        <option value="A">A (Terbaik - Grade Export)</option>
-                        <option value="B">B (Baik - Grade Lokal Premium)</option>
-                        <option value="C">C (Standar - Grade Lokal)</option>
+                        <option value="">-- Pilih Status --</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Verifikasi">Verifikasi</option>
+                        <option value="Reject">Reject</option>
                     </select>
                 </div>
             </div>
-            
-            <!-- Jenis Jeruk -->
-            <div class="form-group">
-                <label class="form-label">Jenis Jeruk *</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="jeruk_sipirok" name="jenis_jeruk" value="Sipirok" required>
-                        <label for="jeruk_sipirok" class="radio-label">
-                            <i class="fas fa-lemon"></i> Jeruk Sipirok
-                        </label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="jeruk_medan" name="jenis_jeruk" value="Medan">
-                        <label for="jeruk_medan" class="radio-label">
-                            <i class="fas fa-lemon"></i> Jeruk Medan
-                        </label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="jeruk_bali" name="jenis_jeruk" value="Bali">
-                        <label for="jeruk_bali" class="radio-label">
-                            <i class="fas fa-lemon"></i> Jeruk Bali
-                        </label>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Upload Bukti Pembelian -->
             <div class="form-group">
                 <label class="form-label">Upload Bukti Pembelian</label>
@@ -160,13 +117,6 @@
                         <i class="fas fa-times"></i> Hapus
                     </button>
                 </div>
-            </div>
-            
-            <!-- Catatan Tambahan -->
-            <div class="form-group">
-                <label class="form-label">Catatan Tambahan</label>
-                <textarea id="catatan" name="catatan" class="form-control" rows="3" 
-                          placeholder="Masukkan catatan khusus (opsional)..."></textarea>
             </div>
             
             <!-- Tombol Aksi -->
@@ -209,8 +159,8 @@
                     <i class="fas fa-user-check"></i>
                 </div>
                 <div class="guide-content">
-                    <strong>Data Petani</strong>
-                    <p>Pastikan data petani dan ladang sesuai dengan yang tercatat</p>
+                    <strong>Data Ladang</strong>
+                    <p>Pastikan ladang sesuai dengan yang tercatat</p>
                 </div>
             </div>
             
