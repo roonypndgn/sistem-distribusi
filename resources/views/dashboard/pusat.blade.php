@@ -833,44 +833,44 @@
     </style>
 </head>
 <body>
-   <!-- Modal Logout -->
-<div class="modal-overlay" id="logoutModal" style="display: none;">
-    <div class="modal-content">
-        <div class="modal-header">
-            <div class="modal-icon">
-                <i class="fas fa-sign-out-alt"></i>
+    <!-- Modal Logout -->
+    <div class="modal-overlay" id="logoutModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+                <h3 class="modal-title">Konfirmasi Logout</h3>
             </div>
-            <h3 class="modal-title">Konfirmasi Logout</h3>
-        </div>
-        <div class="modal-body">
-            <p>Apakah Anda yakin ingin keluar dari sistem?</p>
-            <p class="modal-warning"><i class="fas fa-exclamation-circle"></i> Semua perubahan yang belum disimpan akan hilang.</p>
-        </div>
-        <div class="modal-footer">
-            <button class="modal-btn modal-btn-cancel" id="cancelLogout">Batal</button>
-            <button class="modal-btn modal-btn-confirm" id="confirmLogout">
-                <i class="fas fa-sign-out-alt"></i> Ya, Logout
-            </button>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin keluar dari sistem?</p>
+                <p class="modal-warning"><i class="fas fa-exclamation-circle"></i> Semua perubahan yang belum disimpan akan hilang.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" id="cancelLogout">Batal</button>
+                <button class="modal-btn modal-btn-confirm" id="confirmLogout">
+                    <i class="fas fa-sign-out-alt"></i> Ya, Logout
+                </button>
+            </div>
         </div>
     </div>
-</div>
-
-<!-- Toast Notification -->
-<div class="toast" id="logoutToast">
-    <div class="toast-icon">
-        <i class="fas fa-check-circle"></i>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="logoutToast">
+        <div class="toast-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-content">
+            <div class="toast-title">Berhasil Logout</div>
+            <div class="toast-message">Anda telah keluar dari sistem. Mengarahkan ke halaman login...</div>
+        </div>
+        <div class="toast-progress"></div>
     </div>
-    <div class="toast-content">
-        <div class="toast-title">Berhasil Logout</div>
-        <div class="toast-message">Anda telah keluar dari sistem. Mengarahkan ke halaman login...</div>
-    </div>
-    <div class="toast-progress"></div>
-</div>
-
-<!-- Form Logout Laravel (tersembunyi) -->
-<form id="laravel-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-</form>
+    
+    <!-- Form Logout Laravel (tersembunyi) -->
+    <form id="laravel-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
     
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
@@ -904,92 +904,129 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
                             <span class="nav-icon"><i class="fas fa-home"></i></span>
-                            <span class="nav-text">Dashboard</span>
+                            <span class="nav-text">Dashboard Utama</span>
                         </a>
                     </li>
                 </ul>
             </div>
             
-            <!-- Data & Distribusi -->
+            <!-- Monitoring & Tracking -->
             <div class="nav-section">
-                <div class="nav-title">Data & Distribusi</div>
+                <div class="nav-title">Monitoring & Tracking</div>
                 <ul class="nav-items">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <span class="nav-icon"><i class="fas fa-truck"></i></span>
-                            <span class="nav-text">Data Distribusi</span>
+                            <span class="nav-text">Monitoring Distribusi</span>
                             <span class="nav-badge">3</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-map-marked-alt"></i></span>
-                            <span class="nav-text">Tracking Real-time</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-history"></i></span>
-                            <span class="nav-text">Riwayat Pengiriman</span>
+                            <span class="nav-icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span class="nav-text">Tracking Jeruk Real-time</span>
                         </a>
                     </li>
                 </ul>
             </div>
             
-            <!-- Manajemen Keuangan -->
+            <!-- Laporan -->
             <div class="nav-section">
-                <div class="nav-title">Manajemen Keuangan</div>
+                <div class="nav-title">Laporan</div>
                 <ul class="nav-items">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
-                            <span class="nav-text">Harga Beli Jeruk</span>
+                            <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                            <span class="nav-text">Laporan Harga Pembelian</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
-                            <span class="nav-text">Analisis Fluktuasi Harga</span>
+                            <span class="nav-icon"><i class="fas fa-seedling"></i></span>
+                            <span class="nav-text">Laporan Produksi & Panen</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-shipping-fast"></i></span>
+                            <span class="nav-text">Laporan Pengiriman</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <span class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></span>
+                            <span class="nav-text">Laporan Keuangan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-money-check-alt"></i></span>
                             <span class="nav-text">Laporan Penggajian</span>
                         </a>
                     </li>
                 </ul>
             </div>
             
-            <!-- Manajemen Produksi -->
+            <!-- Analitik & Grafik -->
             <div class="nav-section">
-                <div class="nav-title">Manajemen Produksi</div>
+                <div class="nav-title">Analitik & Grafik</div>
                 <ul class="nav-items">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-seedling"></i></span>
-                            <span class="nav-text">Data Panen per Ladang</span>
+                            <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+                            <span class="nav-text">Analitik Tren Harga</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-star"></i></span>
-                            <span class="nav-text">Kualitas Jeruk per Batch</span>
+                            <span class="nav-icon"><i class="fas fa-chart-pie"></i></span>
+                            <span class="nav-text">Analitik Volume Produksi</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-cloud-sun"></i></span>
-                            <span class="nav-text">Pengaruh Cuaca</span>
+                            <span class="nav-icon"><i class="fas fa-chart-area"></i></span>
+                            <span class="nav-text">Analitik Biaya Distribusi</span>
                         </a>
                     </li>
                 </ul>
             </div>
             
-            <!-- Manajemen SDM -->
+            <!-- Sistem & Manajemen -->
             <div class="nav-section">
-                <div class="nav-title">Manajemen SDM</div>
+                <div class="nav-title">Sistem & Manajemen</div>
                 <ul class="nav-items">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-history"></i></span>
+                            <span class="nav-text">Log Aktivitas Pengguna</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-users-cog"></i></span>
+                            <span class="nav-text">Manajemen Pengguna</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Data Master -->
+            <div class="nav-section">
+                <div class="nav-title">Data Master</div>
+                <ul class="nav-items">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-user-tie"></i></span>
+                            <span class="nav-text">Data Petani</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon"><i class="fas fa-tractor"></i></span>
+                            <span class="nav-text">Data Ladang</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <span class="nav-icon"><i class="fas fa-users"></i></span>
@@ -998,92 +1035,41 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-calendar-check"></i></span>
-                            <span class="nav-text">Absensi Harian</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-hand-holding-usd"></i></span>
-                            <span class="nav-text">Penggajian & Pembayaran</span>
+                            <span class="nav-icon"><i class="fas fa-truck"></i></span>
+                            <span class="nav-text">Data Kendaraan</span>
                         </a>
                     </li>
                 </ul>
             </div>
             
-            <!-- Monitoring -->
+            <!-- Tools & Export -->
             <div class="nav-section">
-                <div class="nav-title">Monitoring</div>
+                <div class="nav-title">Tools & Export</div>
                 <ul class="nav-items">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-cloud-sun-rain"></i></span>
-                            <span class="nav-text">Dashboard Cuaca</span>
+                            <span class="nav-icon"><i class="fas fa-file-pdf"></i></span>
+                            <span class="nav-text">Export PDF</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-exclamation-triangle"></i></span>
-                            <span class="nav-text">Laporan Gangguan</span>
-                            <span class="nav-badge">5</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Laporan & Audit -->
-            <div class="nav-section">
-                <div class="nav-title">Laporan & Audit</div>
-                <ul class="nav-items">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-file-contract"></i></span>
-                            <span class="nav-text">Laporan Keuangan</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-clipboard-list"></i></span>
-                            <span class="nav-text">Log Aktivitas</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-exchange-alt"></i></span>
-                            <span class="nav-text">Histori Transaksi</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Pengaturan -->
-            <div class="nav-section">
-                <div class="nav-title">Pengaturan</div>
-                <ul class="nav-items">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-user-cog"></i></span>
-                            <span class="nav-text">Manajemen User & Role</span>
+                            <span class="nav-icon"><i class="fas fa-file-excel"></i></span>
+                            <span class="nav-text">Export Excel</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <span class="nav-icon"><i class="fas fa-cogs"></i></span>
-                            <span class="nav-text">Konfigurasi Sistem</span>
+                            <span class="nav-text">Pengaturan Sistem</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon"><i class="fas fa-database"></i></span>
-                            <span class="nav-text">Backup Data</span>
+                        <a href="#" class="nav-link" id="logoutBtn">
+                            <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
+                            <span class="nav-text">Logout</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-    <a href="#" class="nav-link" id="logoutBtn">
-        <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
-        <span class="nav-text">Logout</span>
-    </a>
-</li>
                 </ul>
             </div>
         </nav>
@@ -1098,7 +1084,7 @@
     <main class="main-content">
         <!-- Header -->
         <header class="main-header">
-            <div class="page-title">Dashboard Manajemen Pusat</div>
+            <div class="page-title">Dashboard Utama</div>
             <div class="header-actions">
                 <div class="search-box">
                     <i class="fas fa-search search-icon"></i>
@@ -1117,13 +1103,13 @@
             <div class="content-grid">
                 <div class="content-card">
                     <div class="card-title">
-                        <span>Total Pembelian</span>
+                        <span>Total Produksi Hari Ini</span>
                         <div class="card-icon">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-seedling"></i>
                         </div>
                     </div>
-                    <div class="stat-number">Rp 2.5 M</div>
-                    <div class="stat-label">+12% dari bulan lalu</div>
+                    <div class="stat-number">2,450 kg</div>
+                    <div class="stat-label">+15% dari kemarin</div>
                 </div>
                 
                 <div class="content-card">
@@ -1133,19 +1119,19 @@
                             <i class="fas fa-truck-loading"></i>
                         </div>
                     </div>
-                    <div class="stat-number">18</div>
-                    <div class="stat-label">Dalam perjalanan ke Jakarta</div>
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Dalam perjalanan</div>
                 </div>
                 
                 <div class="content-card">
                     <div class="card-title">
-                        <span>Total Pengeluaran</span>
+                        <span>Pendapatan Bulan Ini</span>
                         <div class="card-icon">
                             <i class="fas fa-money-bill-wave"></i>
                         </div>
                     </div>
-                    <div class="stat-number">Rp 1.8 M</div>
-                    <div class="stat-label">-5% dari bulan lalu</div>
+                    <div class="stat-number">Rp 850 Jt</div>
+                    <div class="stat-label">Target: Rp 1 M</div>
                 </div>
                 
                 <div class="content-card">
@@ -1156,7 +1142,7 @@
                         </div>
                     </div>
                     <div class="stat-number">124</div>
-                    <div class="stat-label">+8 petani baru bulan ini</div>
+                    <div class="stat-label">+8 petani baru</div>
                 </div>
             </div>
             
@@ -1164,40 +1150,94 @@
             <div class="content-grid">
                 <div class="content-card" style="grid-column: span 2;">
                     <div class="card-title">
-                        <span>Grafik Produksi Bulanan (Ton)</span>
+                        <span>Grafik Produksi 7 Hari Terakhir (kg)</span>
                         <div class="card-icon">
-                            <i class="fas fa-chart-bar"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
                     </div>
                     <div class="demo-chart">
-                        <div class="chart-bar" style="height: 80%;"></div>
                         <div class="chart-bar" style="height: 65%;"></div>
-                        <div class="chart-bar" style="height: 90%;"></div>
                         <div class="chart-bar" style="height: 75%;"></div>
+                        <div class="chart-bar" style="height: 90%;"></div>
+                        <div class="chart-bar" style="height: 85%;"></div>
                         <div class="chart-bar" style="height: 95%;"></div>
+                        <div class="chart-bar" style="height: 80%;"></div>
                         <div class="chart-bar" style="height: 70%;"></div>
                     </div>
                 </div>
                 
                 <div class="content-card">
                     <div class="card-title">
-                        <span>Notifikasi Terbaru</span>
+                        <span>Aktivitas Terbaru</span>
                         <div class="card-icon">
                             <i class="fas fa-bell"></i>
                         </div>
                     </div>
                     <div style="margin-top: 10px;">
                         <div style="padding: 10px; background-color: var(--primary-lighter); border-radius: 8px; margin-bottom: 10px; font-size: 13px;">
-                            <div style="font-weight: 600; color: var(--primary);">Pengiriman #JKT-235</div>
-                            <div style="color: var(--text-light);">Tiba di Medan - 10 menit lalu</div>
+                            <div style="font-weight: 600; color: var(--primary);">Panen Selesai</div>
+                            <div style="color: var(--text-light);">Ladang Simalungun - 500 kg</div>
+                            <div style="font-size: 11px; color: var(--text-lighter);">30 menit lalu</div>
                         </div>
                         <div style="padding: 10px; background-color: var(--primary-lighter); border-radius: 8px; margin-bottom: 10px; font-size: 13px;">
-                            <div style="font-weight: 600; color: var(--primary);">Pembayaran Petani</div>
-                            <div style="color: var(--text-light);">15 pembayaran berhasil diproses</div>
+                            <div style="font-weight: 600; color: var(--primary);">Pengiriman #JKT-235</div>
+                            <div style="color: var(--text-light);">Tiba di Jakarta - 2 jam lalu</div>
+                            <div style="font-size: 11px; color: var(--text-lighter);">1.2 ton jeruk</div>
                         </div>
                         <div style="padding: 10px; background-color: var(--primary-lighter); border-radius: 8px; font-size: 13px;">
-                            <div style="font-weight: 600; color: var(--primary);">Laporan Cuaca</div>
-                            <div style="color: var(--text-light);">Hujan diperkirakan di Berastagi</div>
+                            <div style="font-weight: 600; color: var(--primary);">Pembayaran Petani</div>
+                            <div style="color: var(--text-light);">10 transaksi berhasil</div>
+                            <div style="font-size: 11px; color: var(--text-lighter);">Total: Rp 45 juta</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-title">
+                        <span>Quick Actions</span>
+                        <div class="card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                        <button style="padding: 10px; background-color: var(--primary-lighter); border: none; border-radius: 8px; color: var(--primary); font-weight: 500; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-plus-circle"></i> Tambah Data Petani
+                        </button>
+                        <button style="padding: 10px; background-color: var(--primary-lighter); border: none; border-radius: 8px; color: var(--primary); font-weight: 500; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-file-export"></i> Generate Laporan
+                        </button>
+                        <button style="padding: 10px; background-color: var(--primary-lighter); border: none; border-radius: 8px; color: var(--primary); font-weight: 500; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-chart-pie"></i> Lihat Analitik
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="content-card" style="grid-column: span 2;">
+                    <div class="card-title">
+                        <span>Status Pengiriman Real-time</span>
+                        <div class="card-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                        <div style="padding: 15px; background-color: #E8F5F0; border-radius: 10px;">
+                            <div style="font-weight: 600; color: var(--primary);">#JKT-238</div>
+                            <div style="font-size: 12px; color: var(--text-light);">Medan → Jakarta</div>
+                            <div style="display: flex; align-items: center; gap: 5px; margin-top: 5px;">
+                                <div style="width: 10px; height: 10px; background-color: #4CAF50; border-radius: 50%;"></div>
+                                <span style="font-size: 12px; color: var(--text-dark);">Dalam Perjalanan</span>
+                            </div>
+                        </div>
+                        <div style="padding: 15px; background-color: #E8F5F0; border-radius: 10px;">
+                            <div style="font-weight: 600; color: var(--primary);">#BDG-142</div>
+                            <div style="font-size: 12px; color: var(--text-light);">Berastagi → Bandung</div>
+                            <div style="display: flex; align-items: center; gap: 5px; margin-top: 5px;">
+                                <div style="width: 10px; height: 10px; background-color: #FFC107; border-radius: 50%;"></div>
+                                <span style="font-size: 12px; color: var(--text-dark);">Loading</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1280,10 +1320,6 @@
             // Demo chart animation
             const chartBars = document.querySelectorAll('.chart-bar');
             chartBars.forEach((bar, index) => {
-                // Random height for demo
-                const height = Math.floor(Math.random() * 60) + 40;
-                bar.style.height = `${height}%`;
-                
                 // Add animation delay
                 bar.style.animationDelay = `${index * 0.1}s`;
             });
@@ -1294,6 +1330,7 @@
             const cancelLogout = document.getElementById('cancelLogout');
             const confirmLogout = document.getElementById('confirmLogout');
             const logoutToast = document.getElementById('logoutToast');
+            const logoutForm = document.getElementById('laravel-logout-form');
             
             // Show logout modal
             if (logoutBtn) {
@@ -1312,14 +1349,6 @@
                 });
             }
             
-            // Close modal when clicking outside
-            logoutModal.addEventListener('click', function(e) {
-                if (e.target === logoutModal) {
-                    logoutModal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            
             // Handle logout confirmation
             if (confirmLogout) {
                 confirmLogout.addEventListener('click', function() {
@@ -1330,41 +1359,22 @@
                     logoutModal.style.display = 'none';
                     document.body.style.overflow = 'auto';
                     
-                    // Simulate logout process
+                    // Submit logout form after delay
                     setTimeout(() => {
-                        // Show success message
-                        setTimeout(() => {
-                            // Simulate redirect to login page
-                            // In a real application, you would redirect to login page:
-                            // window.location.href = '/login.html';
-                            
-                            // For demo purposes, show alert and reload
-                            alert('Anda telah berhasil logout. Dalam aplikasi nyata, Anda akan diarahkan ke halaman login.');
-                            
-                            // Clear any demo session data
-                            localStorage.removeItem('demo_session');
-                            sessionStorage.removeItem('demo_session');
-                            
-                            // Reload page for demo
-                            window.location.reload();
-                        }, 1500);
-                    }, 500);
+                        if (logoutForm) {
+                            logoutForm.submit();
+                        }
+                    }, 1500);
                 });
             }
             
-            // Close toast after animation
-            if (logoutToast) {
-                logoutToast.addEventListener('click', function() {
-                    this.classList.remove('show');
-                });
-                
-                // Auto-close toast after progress bar finishes
-                setTimeout(() => {
-                    if (logoutToast.classList.contains('show')) {
-                        logoutToast.classList.remove('show');
-                    }
-                }, 3000);
-            }
+            // Close modal when clicking outside
+            logoutModal.addEventListener('click', function(e) {
+                if (e.target === logoutModal) {
+                    logoutModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
             
             // Close modal with ESC key
             document.addEventListener('keydown', function(e) {
