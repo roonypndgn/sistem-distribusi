@@ -32,10 +32,10 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Sopir Logistik',
-            'email' => 'sopir@mdh.co.id',
+            'name' => 'Supir Logistik',
+            'email' => 'supir@mdh.co.id',
             'password' => Hash::make('password'),
-            'role' => 'karyawan',
+            'role' => 'supir',
         ]);
     }
 }

@@ -34,8 +34,8 @@ Route::middleware('auth')->group(function () {
                 return redirect()->route('dashboard.manajer');
             case 'karyawan':
                 return redirect()->route('dashboard.karyawan');
-            case 'petani':
-                return redirect()->route('dashboard.petani');
+            case 'supir':
+                return redirect()->route('dashboard.supir');
             default:
                 return redirect('/home');
         }
@@ -54,9 +54,9 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.karyawan');
     })->name('dashboard.karyawan')->middleware('checkRole:karyawan');
     
-    Route::get('/dashboard/petani', function () {
-        return view('dashboard.petani');
-    })->name('dashboard.petani')->middleware('checkRole:petani');
+    Route::get('/dashboard/supir', function () {
+        return view('dashboard.supir');
+    })->name('dashboard.supir')->middleware('checkRole:supir');
 });
 
 // Forgot password (opsional)

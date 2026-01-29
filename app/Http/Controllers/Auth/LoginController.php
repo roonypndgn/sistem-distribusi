@@ -26,7 +26,7 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
-            'role' => 'required|in:pusat,manajer,karyawan,petani',
+            'role' => 'required|in:pusat,manajer,karyawan,supir',
         ]);
 
         // Cek apakah user ada dengan email
@@ -75,8 +75,8 @@ class LoginController extends Controller
                 return redirect()->route('dashboard.manajer');
             case 'karyawan':
                 return redirect()->route('dashboard.karyawan');
-            case 'petani':
-                return redirect()->route('dashboard.petani');
+            case 'supir':
+                return redirect()->route('dashboard.supir');
             default:
                 return redirect('/home');
         }
