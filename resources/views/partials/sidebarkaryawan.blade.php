@@ -63,16 +63,9 @@
             <div class="nav-title">Gaji & Pembayaran</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('karyawan.slip-gaji') ? 'active' : '' }}">
+                    <a href="{{route('karyawan.slip-gaji')}}" class="nav-link {{ request()->routeIs('karyawan.slip-gaji') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></span>
                         <span class="nav-text">Lihat Slip Gaji</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('karyawan.notifikasi') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-bell"></i></span>
-                        <span class="nav-text">Notifikasi Pembayaran</span>
-                        <span class="payment-badge">1</span>
                     </a>
                 </li>
             </ul>
