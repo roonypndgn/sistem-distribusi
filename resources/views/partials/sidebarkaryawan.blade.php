@@ -41,38 +41,18 @@
         
         <!-- Absensi & Jadwal -->
         <div class="nav-section">
-            <div class="nav-title">Absensi & Jadwal</div>
+            <div class="nav-title">Absensi Kerja</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('karyawan.absensi') ? 'active' : '' }}">
+                    <a href="{{route('karyawan.data-absensi')}}" class="nav-link {{ request()->routeIs('karyawan.data-absensi') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-fingerprint"></i></span>
                         <span class="nav-text">Absensi Harian</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('karyawan.jadwal') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
-                        <span class="nav-text">Lihat Jadwal Kerja</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('karyawan.riwayat') ? 'active' : '' }}">
+                    <a href="{{route('karyawan.riwayat-kerja')}}" class="nav-link {{ request()->routeIs('karyawan.riwayat-kerja') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-history"></i></span>
                         <span class="nav-text">Riwayat Kerja</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        
-        <!-- Produksi & Packing -->
-        <div class="nav-section">
-            <div class="nav-title">Produksi & Packing</div>
-            <ul class="nav-items">
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('karyawan.packing') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-boxes"></i></span>
-                        <span class="nav-text">Input Hasil Packing</span>
-                        <span class="nav-badge">Hari Ini</span>
                     </a>
                 </li>
             </ul>

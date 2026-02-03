@@ -10,6 +10,10 @@ use App\Http\Controllers\StatusDistribusiController;
 use App\Http\Controllers\CuacaController;
 use App\Http\Controllers\PetaniController;
 use App\Http\Controllers\LadangController;
+use App\Http\Controllers\KaryawanAbsensiController;
+use App\Http\Controllers\KaryawanRiwayatController;
+use App\Http\Controllers\KaryawanSlipGajiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +84,15 @@ Route::middleware(['auth'])->group(function () {
         
     });
 });
+//Karyawan
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('karyawan')->group(function () {
+        Route::get('/data-absensi', [KaryawanAbsensiController::class, 'dataAbsensi'])->name('karyawan.data-absensi');
+        Route::get('/riwayat-kerja', [KaryawanRiwayatController::class, 'dataRiwayat'])->name('karyawan.riwayat-kerja');
+        Route::get('/slip-gaji', [KaryawanSlipGajiController::class, 'dataGaji'])->name('karyawan.slip-gaji');
+    });
+});
+
 
 // Forgot password (opsional)
 Route::get('/forgot-password', function () {
