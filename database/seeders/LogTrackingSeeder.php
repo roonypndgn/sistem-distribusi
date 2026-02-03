@@ -14,6 +14,8 @@ class LogTrackingSeeder extends Seeder
             'timestamp_log' => now(),
             'koordinat_gps' => '-3.2000,98.6000',
             'status' => 'Dalam Perjalanan',
+            'note'=>'ok',
+            'location_description'=>'dekat tol',
         ]);
     }
 }

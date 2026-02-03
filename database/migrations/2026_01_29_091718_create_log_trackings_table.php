@@ -10,11 +10,13 @@ return new class extends Migration {
         Schema::create('log_trackings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pengiriman_id')
-            ->constrained('pengirimans')
-            ->onDelete('cascade');
+                ->constrained('pengirimans')
+                ->onDelete('cascade');
             $table->dateTime('timestamp_log');
             $table->string('koordinat_gps', 50);
             $table->string('status');
+            $table->text('note')->nullable();
+            $table->string('location_description')->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,10 @@ use App\Http\Controllers\LadangController;
 use App\Http\Controllers\KaryawanAbsensiController;
 use App\Http\Controllers\KaryawanRiwayatController;
 use App\Http\Controllers\KaryawanSlipGajiController;
+use App\Http\Controllers\SupirDaftarPengirimanController;
+use App\Http\Controllers\SupirRiwayatPengirimanController;
+use App\Http\Controllers\PusatLadangController;
+use App\Http\Controllers\PusatPetaniController;
 
 
 /*
@@ -90,6 +94,22 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/data-absensi', [KaryawanAbsensiController::class, 'dataAbsensi'])->name('karyawan.data-absensi');
         Route::get('/riwayat-kerja', [KaryawanRiwayatController::class, 'dataRiwayat'])->name('karyawan.riwayat-kerja');
         Route::get('/slip-gaji', [KaryawanSlipGajiController::class, 'dataGaji'])->name('karyawan.slip-gaji');
+    });
+});
+//Supir
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('supir')->group(function () {
+        Route::get('/daftar-pengiriman', [SupirDaftarPengirimanController::class, 'daftarPengiriman'])->name('supir.daftar-pengiriman');
+        Route::get('/riwayat-pengiriman', [SupirRiwayatPengirimanController::class, 'daftarRiwayat'])->name('supir.riwayat-pengiriman');
+    
+    });
+});
+//Pusat
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('pusat')->group(function () {
+        Route::get('/data-petani', [PusatPetaniController::class, 'dataPetani'])->name('pusat.data-petani');
+        Route::get('/data-ladang', [PusatLadangController::class, 'dataLadang'])->name('pusat.data-ladang');
+    
     });
 });
 

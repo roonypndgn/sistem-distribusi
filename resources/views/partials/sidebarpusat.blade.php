@@ -142,13 +142,13 @@
             <div class="nav-title">Data Master</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.data-petani') ? 'active' : '' }}">
+                    <a href="{{route('pusat.data-petani')}}" class="nav-link {{ request()->routeIs('pusat.data-petani') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-user-tie"></i></span>
                         <span class="nav-text">Data Petani</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.data-ladang') ? 'active' : '' }}">
+                    <a href="{{route('pusat.data-ladang')}}" class="nav-link {{ request()->routeIs('pusat.data-ladang') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-tractor"></i></span>
                         <span class="nav-text">Data Ladang</span>
                     </a>

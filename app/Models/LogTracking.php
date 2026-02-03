@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class LogTracking extends Model
 {
@@ -11,13 +11,19 @@ class LogTracking extends Model
 
     protected $fillable = [
         'pengiriman_id',
+        'timestamp_log',
+        'koordinat_gps',
         'status',
-        'lokasi',
-        'waktu',
+        'note',
+        'location_description'
     ];
 
-   public function pengiriman()
+    protected $casts = [
+        'timestamp_log' => 'datetime'
+    ];
+
+    public function pengiriman()
     {
-        return $this->belongsTo(Pengiriman::class, 'pengiriman_id');
+        return $this->belongsTo(Pengiriman::class);
     }
 }

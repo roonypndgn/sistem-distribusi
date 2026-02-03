@@ -44,22 +44,10 @@
             <div class="nav-title">Pengiriman & Tracking</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('supir.daftar-pengiriman') ? 'active' : '' }}">
+                    <a href="{{route('supir.daftar-pengiriman')}}" class="nav-link {{ request()->routeIs('supir.daftar-pengiriman') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-truck-loading"></i></span>
                         <span class="nav-text">Daftar Pengiriman</span>
                         <span class="delivery-badge">3</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('supir.update-status') ? 'active' : '' }}" id="updateStatusBtn">
-                        <span class="nav-icon"><i class="fas fa-sync-alt"></i></span>
-                        <span class="nav-text">Update Status Pengiriman</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('supir.tracking') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-map-marker-alt"></i></span>
-                        <span class="nav-text">Tracking Lokasi (GPS)</span>
                     </a>
                 </li>
             </ul>
@@ -67,32 +55,12 @@
         
         <!-- Waktu & Riwayat -->
         <div class="nav-section">
-            <div class="nav-title">Waktu & Riwayat</div>
+            <div class="nav-title">Riwayat</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('supir.input-waktu') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-clock"></i></span>
-                        <span class="nav-text">Input Waktu Berangkat & Tiba</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('supir.riwayat') ? 'active' : '' }}">
+                    <a href="{{route('supir.riwayat-pengiriman')}}" class="nav-link {{ request()->routeIs('supir.riwayat-pengiriman') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-history"></i></span>
                         <span class="nav-text">Riwayat Pengiriman</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        
-        <!-- Notifikasi -->
-        <div class="nav-section">
-            <div class="nav-title">Notifikasi</div>
-            <ul class="nav-items">
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('supir.notifikasi') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-bell"></i></span>
-                        <span class="nav-text">Notifikasi Tugas</span>
-                        <span class="nav-badge">2</span>
                     </a>
                 </li>
             </ul>
