@@ -15,6 +15,7 @@ class PengemasanSeeder extends Seeder
             'jumlah_kemasan' => 100,
             'kualitas_pengemasan' => 'baik',
             'tanggal_kemas' => now(),
+            'catatan'=>'ok',
         ]);
     }
 }

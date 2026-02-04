@@ -196,12 +196,12 @@
                     <label class="form-label">Petani *</label>
                     <select id="edit_petani_id" name="petani_id" class="form-control" required>
                         <option value="">-- Pilih Petani --</option>
-                        <option value="1">Tuan Sitorus</option>
-                        <option value="2">Budi Santoso</option>
-                        <option value="3">Joko Widodo</option>
-                        <option value="4">Siti Aminah</option>
-                        <option value="5">Rudi Hartono</option>
-                        <option value="6">Ani Wijaya</option>
+                        <option value="1">Tuan Pandiangan</option>
+                        <option value="2">Tuan Silalahi</option>
+                        <option value="3">Tuan Siregar</option>
+                        <option value="4">Pak Sinuhaji</option>
+                        <option value="5">Ibu Munthe</option>
+                        <option value="6">Ibu Ginting</option>
                     </select>
                 </div>
                 

@@ -61,27 +61,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.laporan-produksi') ? 'active' : '' }}">
+                    <a href="{{route('pusat.laporan-produksi')}}" class="nav-link {{ request()->routeIs('pusat.laporan-produksi') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-seedling"></i></span>
                         <span class="nav-text">Laporan Produksi</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.laporan-pengiriman') ? 'active' : '' }}">
+                    <a href="{{route('pusat.laporan-pengiriman')}}" class="nav-link {{ request()->routeIs('pusat.laporan-pengiriman') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-shipping-fast"></i></span>
                         <span class="nav-text">Laporan Pengiriman</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.laporan-keuangan') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></span>
-                        <span class="nav-text">Laporan Keuangan</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.laporan-penggajian') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-money-check-alt"></i></span>
-                        <span class="nav-text">Laporan Penggajian</span>
                     </a>
                 </li>
             </ul>

@@ -16,6 +16,7 @@ class PengirimanSeeder extends Seeder
             'rute' => 'Berastagi - Medan - Jakarta',
             'tujuan_akhir' => 'Gudang Jakarta',
             'status' => 'dikirim',
+            'catatan'=>'ok',
         ]);
     }
 }

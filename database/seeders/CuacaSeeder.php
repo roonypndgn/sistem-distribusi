@@ -15,6 +15,8 @@ class CuacaSeeder extends Seeder
             'curah_hujan' => 'Sedang',
             'laporan_gangguan' => 'Hujan ringan, panen sedikit tertunda',
             'sumber_data' => 'manual',
+            'catatan'=>'ok',
+            'bukti_foto'=>'bukti.jpg',
         ]);
     }
 }
