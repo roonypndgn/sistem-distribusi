@@ -85,18 +85,6 @@
                         <span class="nav-text">Analitik Tren Harga</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.analitik-volume-produksi') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-chart-pie"></i></span>
-                        <span class="nav-text">Analitik Volume Produksi</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.analitik-biaya-distribusi') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-chart-area"></i></span>
-                        <span class="nav-text">Analitik Biaya Distribusi</span>
-                    </a>
-                </li>
             </ul>
         </div>
         
@@ -146,20 +134,8 @@
         
         <!-- Tools & Export -->
         <div class="nav-section">
-            <div class="nav-title">Tools & Export</div>
+            <div class="nav-title">Tools</div>
             <ul class="nav-items">
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.export-pdf') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-file-pdf"></i></span>
-                        <span class="nav-text">Export PDF</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.export-excel') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-file-excel"></i></span>
-                        <span class="nav-text">Export Excel</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link" id="logoutBtn">
                         <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>

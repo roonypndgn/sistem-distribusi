@@ -17,7 +17,7 @@ return new class extends Migration
             $table->time('jam_masuk');
             $table->time('jam_keluar')->nullable();
             $table->integer('jam_kerja_total')->comment('Total jam kerja dalam menit');
-
+            $table->string('catatan');
             $table->timestamps();
         });
     }

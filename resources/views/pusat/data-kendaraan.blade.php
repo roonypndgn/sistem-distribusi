@@ -1307,7 +1307,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let kendaraanData = [
         {
             id: 1,
-            plat_nomor: "B 1234 ABC",
+            plat_nomor: "BK 1234 ABC",
             jenis_kendaraan: "Truk Box",
             kapasitas_kg: 8000,
             status: "tersedia",
@@ -1317,7 +1317,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 2,
-            plat_nomor: "B 5678 XYZ",
+            plat_nomor: "BK 5678 XYZ",
             jenis_kendaraan: "Pickup",
             kapasitas_kg: 2000,
             status: "dipakai",
@@ -1327,7 +1327,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 3,
-            plat_nomor: "B 9012 DEF",
+            plat_nomor: "BB 9012 DEF",
             jenis_kendaraan: "Truk Box Besar",
             kapasitas_kg: 12000,
             status: "perbaikan",
@@ -1337,7 +1337,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 4,
-            plat_nomor: "B 3456 GHI",
+            plat_nomor: "BK 3456 GHI",
             jenis_kendaraan: "Truk Fuso",
             kapasitas_kg: 15000,
             status: "tersedia",
@@ -1347,7 +1347,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 5,
-            plat_nomor: "B 7890 JKL",
+            plat_nomor: "BB 7890 JKL",
             jenis_kendaraan: "Truk Tronton",
             kapasitas_kg: 22000,
             status: "tersedia",
@@ -1357,7 +1357,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 6,
-            plat_nomor: "B 1122 MNO",
+            plat_nomor: "BK 1122 MNO",
             jenis_kendaraan: "Pickup",
             kapasitas_kg: 1500,
             status: "dipakai",
@@ -1367,7 +1367,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 7,
-            plat_nomor: "B 3344 PQR",
+            plat_nomor: "BK 3344 PQR",
             jenis_kendaraan: "Truk Box",
             kapasitas_kg: 6000,
             status: "tersedia",
@@ -1377,7 +1377,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 8,
-            plat_nomor: "B 5566 STU",
+            plat_nomor: "BK 5566 STU",
             jenis_kendaraan: "Minibus",
             kapasitas_kg: 1000,
             status: "nonaktif",

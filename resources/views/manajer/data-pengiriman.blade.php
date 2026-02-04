@@ -85,11 +85,12 @@
                     <i class="fas fa-user-tie input-icon"></i>
                     <select id="user_id" name="user_id" class="form-control" required>
                         <option value="">-- Pilih Supir --</option>
-                        <option value="1">Supir 1: Budi Santoso (081234567890) | SIM: B2 Umum</option>
-                        <option value="2">Supir 2: Joko Widodo (081298765432) | SIM: B1 Umum</option>
-                        <option value="3">Supir 3: Rudi Hartono (081312345678) | SIM: B2 Umum</option>
-                        <option value="4">Supir 4: Siti Aminah (081398765432) | SIM: B1 Umum</option>
-                        <option value="5">Supir 5: Ahmad Fauzi (081412345678) | SIM: B2 Umum</option>
+                        <option value="1">Supir 1: Ronny (081234567890) | SIM: B2 Umum</option>
+                        <option value="2">Supir 2: Rieno (081298765432) | SIM: B1 Umum</option>
+                        <option value="3">Supir 3: Risto (081312345678) | SIM: B2 Umum</option>
+                        <option value="4">Supir 4: Trhesya (081398765432) | SIM: B1 Umum</option>
+                        <option value="5">Supir 5: Yekris (081412345678) | SIM: B2 Umum</option>
+                        <option value="6">Supir 6: Maharani (081412345678) | SIM: B2 Umum</option>
                     </select>
                 </div>
                 <div id="supirDetail" style="display: none; margin-top: 10px; padding: 10px; background-color: var(--primary-lighter); border-radius: 8px; font-size: 13px;">
@@ -376,7 +377,7 @@
                     </div>
                     <div class="tracking-details">
                         <div>Medan • 500 kg</div>
-                        <div><strong>Budi Santoso</strong></div>
+                        <div><strong>Ronny</strong></div>
                     </div>
                     <div class="tracking-progress">
                         <div class="progress-bar">
@@ -913,35 +914,42 @@ document.addEventListener('DOMContentLoaded', function() {
     // Data dummy supir
     const supirData = {
         1: {
-            nama: 'Budi Santoso',
+            nama: 'Ronny',
             kontak: '081234567890',
             sim: 'B2 Umum',
             status: 'available',
             pengalaman: '5 tahun'
         },
         2: {
-            nama: 'Joko Widodo',
+            nama: 'Rieno',
             kontak: '081298765432',
             sim: 'B1 Umum',
             status: 'available',
             pengalaman: '3 tahun'
         },
         3: {
-            nama: 'Rudi Hartono',
+            nama: 'Risto',
             kontak: '081312345678',
             sim: 'B2 Umum',
             status: 'available',
             pengalaman: '7 tahun'
         },
         4: {
-            nama: 'Siti Aminah',
+            nama: 'Trhesya',
             kontak: '081398765432',
             sim: 'B1 Umum',
             status: 'busy',
             pengalaman: '4 tahun'
         },
         5: {
-            nama: 'Ahmad Fauzi',
+            nama: 'Yekris',
+            kontak: '081412345678',
+            sim: 'B2 Umum',
+            status: 'available',
+            pengalaman: '2 tahun'
+        },
+        6: {
+            nama: 'Maharani',
             kontak: '081412345678',
             sim: 'B2 Umum',
             status: 'available',

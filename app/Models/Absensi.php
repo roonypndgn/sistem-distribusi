@@ -17,6 +17,7 @@ class Absensi extends Model
         'jam_masuk',
         'jam_keluar',
         'jam_kerja_total',
+        'catatan',
     ];
 
     public function user()

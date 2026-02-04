@@ -10,8 +10,6 @@
     <!-- Header -->
     <div class="content-header">
         <div class="header-left">
-            <h1>Absensi Harian</h1>
-            <p>Catat kehadiran dan jam kerja harian</p>
         </div>
         <div class="header-right">
             <button type="button" id="todayBtn" class="btn btn-primary">

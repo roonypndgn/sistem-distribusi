@@ -10,8 +10,6 @@
     <!-- Header -->
     <div class="content-header">
         <div class="header-left">
-            <h1>Riwayat Kerja</h1>
-            <p>Histori pekerjaan dan tugas yang telah diselesaikan</p>
         </div>
         <div class="header-right">
             <button type="button" id="filterBtn" class="btn btn-secondary">
@@ -1015,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', function() {
             lokasi: "Ladang Simalungun, Berastagi",
             status: "selesai",
             catatan: "Panen dilakukan pagi hari dengan kondisi cuaca cerah. Hasil panen 500kg jeruk kualitas A.",
-            supervisor: "Tuan Sitorus",
+            manajer: "Tuan Pandiangan",
             durasi: "4 jam",
             waktu_mulai: "07:00",
             waktu_selesai: "11:00"
@@ -1029,7 +1027,7 @@ document.addEventListener('DOMContentLoaded', function() {
             lokasi: "Gudang Pusat",
             status: "selesai",
             catatan: "Jeruk dikemas dalam 50 kardus ukuran medium. Total 400kg jeruk siap distribusi.",
-            supervisor: "Budi Santoso",
+            manajer: "Tuan Silalahi",
             durasi: "3 jam",
             waktu_mulai: "08:00",
             waktu_selesai: "11:00"
@@ -1043,7 +1041,7 @@ document.addEventListener('DOMContentLoaded', function() {
             lokasi: "Ladang Berastagi Pusat",
             status: "batal",
             catatan: "Dibatalkan karena hujan lebat. Dijadwalkan ulang untuk besok.",
-            supervisor: "Tuan Sitorus",
+            manajer: "Tuan Siregar",
             durasi: "-",
             waktu_mulai: "07:00",
             waktu_selesai: "-"
@@ -1057,7 +1055,7 @@ document.addEventListener('DOMContentLoaded', function() {
             lokasi: "Gudang Ekspor",
             status: "selesai",
             catatan: "Jeruk dikemas khusus untuk ekspor dengan standar internasional.",
-            supervisor: "Budi Santoso",
+            manajer: "Pak Sinuhaji",
             durasi: "4 jam",
             waktu_mulai: "13:00",
             waktu_selesai: "17:00"
@@ -1071,7 +1069,7 @@ document.addEventListener('DOMContentLoaded', function() {
             lokasi: "Ladang Parapat",
             status: "selesai",
             catatan: "Hasil panen 350kg jeruk kualitas B. Kondisi tanaman baik.",
-            supervisor: "Tuan Sitorus",
+            manajer: "Ibu Munthe",
             durasi: "3 jam",
             waktu_mulai: "08:30",
             waktu_selesai: "11:30"
@@ -1508,7 +1506,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="detail-item">
                     <div class="detail-label">Supervisor</div>
-                    <div class="detail-value">${riwayat.supervisor}</div>
+                    <div class="detail-value">${riwayat.manajer}</div>
                 </div>
             </div>
             

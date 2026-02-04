@@ -1,4 +1,3 @@
-{{-- resources/views/pusat/analitik-tren-harga.blade.php --}}
 @extends('layouts.pusat')
 
 @section('title', 'Analitik Tren Harga - PT. Mardua Holong')

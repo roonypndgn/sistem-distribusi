@@ -1201,7 +1201,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Data dummy supir
     const supirData = {
         id: "SUP-001",
-        nama: "Budi Santoso",
+        nama: "Kelompok 2",
         total_pengiriman: 15,
         dalam_perjalanan_count: 3,
         selesai_count: 5

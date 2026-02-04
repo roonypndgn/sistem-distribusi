@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('manajer.data-pengiriman')}}" class="nav-link {{ request()->routeIs('manajer.pengiriman') ? 'active' : '' }}">
+                    <a href="{{route('manajer.data-pengiriman')}}" class="nav-link {{ request()->routeIs('manajer.data-pengiriman') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-truck"></i></span>
                         <span class="nav-text">Input Pengiriman</span>
                         <span class="input-badge">1</span>

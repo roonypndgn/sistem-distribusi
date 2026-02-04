@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Data dummy supir (sama dengan sebelumnya)
     const supirData = {
         id: "SUP-001",
-        nama: "Budi Santoso"
+        nama: "Kelompok 2"
     };
     
     // Data dummy riwayat pengiriman (lebih banyak data selesai)
