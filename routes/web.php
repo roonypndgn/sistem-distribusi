@@ -24,6 +24,7 @@ use App\Http\Controllers\PusatManajemenUserController;
 use App\Http\Controllers\PusatLaporanHargaController;
 use App\Http\Controllers\PusatLaporanProduksiController;
 use App\Http\Controllers\PusatLaporanPengirimanController;
+use App\Http\Controllers\PusatAnalitikHargaController;
 
 
 /*
@@ -123,6 +124,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/laporan-harga', [PusatLaporanHargaController::class, 'dataHarga'])->name('pusat.laporan-harga');
         Route::get('/laporan-produksi', [PusatLaporanProduksiController::class, 'dataProduksi'])->name('pusat.laporan-produksi');
         Route::get('/laporan-pengiriman', [PusatLaporanPengirimanController::class, 'dataPengiriman'])->name('pusat.laporan-pengiriman');
+        Route::get('/analitik-harga', [PusatAnalitikHargaController::class, 'dataAnalitikHarga'])->name('pusat.analitik-harga');
     
     });
 });

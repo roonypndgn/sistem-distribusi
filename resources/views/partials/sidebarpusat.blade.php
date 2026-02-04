@@ -80,7 +80,7 @@
             <div class="nav-title">Analitik & Grafik</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.analitik-tren-harga') ? 'active' : '' }}">
+                    <a href="{{route('pusat.analitik-harga')}}" class="nav-link {{ request()->routeIs('pusat.analitik-harga') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
                         <span class="nav-text">Analitik Tren Harga</span>
                     </a>
