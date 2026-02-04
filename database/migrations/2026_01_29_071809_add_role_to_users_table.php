@@ -12,6 +12,9 @@ return new class extends Migration
             $table->enum('role', ['pusat', 'manajer', 'karyawan', 'supir'])
                   ->default('karyawan')
                   ->after('password');
+            $table->enum('status', ['aktif', 'nonaktif'])
+                  ->default('aktif')
+                  ->after('role');
         });
     }
 

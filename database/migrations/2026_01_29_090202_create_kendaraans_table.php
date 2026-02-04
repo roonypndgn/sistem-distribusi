@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->string('plat_nomor')->unique();
             $table->string('jenis_kendaraan');
             $table->integer('kapasitas_kg');
+            $table->string('catatan');
+            $table->enum('status', ['tersedia', 'dipakai', 'perbaikan', 'nonaktif']);
             $table->timestamps();
         });
     }

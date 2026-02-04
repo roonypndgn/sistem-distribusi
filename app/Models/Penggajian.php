@@ -19,6 +19,7 @@ class Penggajian extends Model
         'total_potongan',
         'status_pembayaran',
         'tanggal_transfer',
+        'catatan',
     ];
 
     public function user()

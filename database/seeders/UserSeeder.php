@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
             'email' => 'pusat@mdh.co.id',
             'password' => Hash::make('password'),
             'role' => 'pusat',
+            'status'=>'aktif',
         ]);
 
         User::create([
@@ -22,6 +23,7 @@ class UserSeeder extends Seeder
             'email' => 'manajer@mdh.co.id',
             'password' => Hash::make('password'),
             'role' => 'manajer',
+            'status'=>'aktif',
         ]);
 
         User::create([
@@ -29,6 +31,7 @@ class UserSeeder extends Seeder
             'email' => 'karyawan@mdh.co.id',
             'password' => Hash::make('password'),
             'role' => 'karyawan',
+            'status'=>'aktif',
         ]);
 
         User::create([
@@ -36,6 +39,7 @@ class UserSeeder extends Seeder
             'email' => 'supir@mdh.co.id',
             'password' => Hash::make('password'),
             'role' => 'supir',
+            'status'=>'aktif',
         ]);
     }
 }

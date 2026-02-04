@@ -13,6 +13,8 @@ class Kendaraan extends Model
         'plat_nomor',
         'jenis_kendaraan',
         'kapasitas_kg',
+        'catatan',
+        'status',
     ];
 
     public function pengirimans()

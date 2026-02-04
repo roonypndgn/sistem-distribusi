@@ -13,6 +13,8 @@ class KendaraanSeeder extends Seeder
             'plat_nomor' => 'BK 1234 MD',
             'jenis_kendaraan' => 'Truk Box',
             'kapasitas_kg' => 5000,
+            'catatan'=> 'ok',
+            'status'=>'tersedia'
         ]);
     }
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('status_pembayaran', ['belum_dibayar', 'dibayar'])
                   ->default('belum_dibayar');
             $table->date('tanggal_transfer')->nullable();
+            $table->string('catatan');
             $table->timestamps();
         });
     }

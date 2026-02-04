@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->date('tanggal_beli');
             $table->foreignId('ladang_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained('users'); // manajer lapangan
+            $table->foreignId('user_id')->constrained('users');
             $table->decimal('harga_per_kg', 10, 2);
             $table->decimal('jumlah_kg', 10, 2);
             $table->enum('status_verifikasi', ['pending', 'verified', 'rejected'])->default('pending');

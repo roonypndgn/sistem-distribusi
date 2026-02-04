@@ -17,6 +17,10 @@ use App\Http\Controllers\SupirDaftarPengirimanController;
 use App\Http\Controllers\SupirRiwayatPengirimanController;
 use App\Http\Controllers\PusatLadangController;
 use App\Http\Controllers\PusatPetaniController;
+use App\Http\Controllers\PusatKendaraanController;
+use App\Http\Controllers\PusatKaryawanController;
+use App\Http\Controllers\PusatMonitoringController;
+use App\Http\Controllers\PusatManajemenUserController;
 
 
 /*
@@ -109,6 +113,10 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('pusat')->group(function () {
         Route::get('/data-petani', [PusatPetaniController::class, 'dataPetani'])->name('pusat.data-petani');
         Route::get('/data-ladang', [PusatLadangController::class, 'dataLadang'])->name('pusat.data-ladang');
+        Route::get('/data-kendaraan', [PusatKendaraanController::class, 'dataKendaraan'])->name('pusat.data-kendaraan');
+        Route::get('/data-karyawan', [PusatKaryawanController::class, 'dataKaryawan'])->name('pusat.data-karyawan');
+        Route::get('/monitoring-distribusi', [PusatMonitoringController::class, 'dataMonitoring'])->name('pusat.monitoring-distribusi');
+        Route::get('/manajemen-pengguna', [PusatManajemenUserController::class, 'dataUser'])->name('pusat.manajemen-pengguna');
     
     });
 });

@@ -38,19 +38,13 @@
         
         <!-- Monitoring & Tracking -->
         <div class="nav-section">
-            <div class="nav-title">Monitoring & Tracking</div>
+            <div class="nav-title">Monitoring Jeruk</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.monitoring-distribusi') ? 'active' : '' }}">
+                    <a href="{{route('pusat.monitoring-distribusi')}}" class="nav-link {{ request()->routeIs('pusat.monitoring-distribusi') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-truck"></i></span>
-                        <span class="nav-text">Monitoring Distribusi</span>
+                        <span class="nav-text">Monitor Distribusi</span>
                         <span class="nav-badge">3</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.tracking-real-time') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-map-marker-alt"></i></span>
-                        <span class="nav-text">Tracking Jeruk Real-time</span>
                     </a>
                 </li>
             </ul>
@@ -63,13 +57,13 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link {{ request()->routeIs('pusat.laporan-harga') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
-                        <span class="nav-text">Laporan Harga Pembelian</span>
+                        <span class="nav-text">Laporan Harga Beli</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link {{ request()->routeIs('pusat.laporan-produksi') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-seedling"></i></span>
-                        <span class="nav-text">Laporan Produksi & Panen</span>
+                        <span class="nav-text">Laporan Produksi</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -123,13 +117,7 @@
             <div class="nav-title">Sistem & Manajemen</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.log-aktivitas') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-history"></i></span>
-                        <span class="nav-text">Log Aktivitas Pengguna</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.manajemen-pengguna') ? 'active' : '' }}">
+                    <a href="{{route('pusat.manajemen-pengguna')}}" class="nav-link {{ request()->routeIs('pusat.manajemen-pengguna') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-users-cog"></i></span>
                         <span class="nav-text">Manajemen Pengguna</span>
                     </a>
@@ -154,13 +142,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.data-karyawan') ? 'active' : '' }}">
+                    <a href="{{route('pusat.data-karyawan')}}" class="nav-link {{ request()->routeIs('pusat.data-karyawan') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-users"></i></span>
-                        <span class="nav-text">Data Karyawan</span>
+                        <span class="nav-text">Data Gaji Karyawan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.data-kendaraan') ? 'active' : '' }}">
+                    <a href="{{route('pusat.data-kendaraan')}}" class="nav-link {{ request()->routeIs('pusat.data-kendaraan') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-truck"></i></span>
                         <span class="nav-text">Data Kendaraan</span>
                     </a>
@@ -182,12 +170,6 @@
                     <a href="#" class="nav-link {{ request()->routeIs('pusat.export-excel') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-file-excel"></i></span>
                         <span class="nav-text">Export Excel</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.pengaturan-sistem') ? 'active' : '' }}">
-                        <span class="nav-icon"><i class="fas fa-cogs"></i></span>
-                        <span class="nav-text">Pengaturan Sistem</span>
                     </a>
                 </li>
                 <li class="nav-item">
