@@ -18,6 +18,7 @@ class Pengiriman extends Model
         'rute',
         'tujuan_akhir',
         'status',
+        'catatan',
     ];
 
     public function user()

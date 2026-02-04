@@ -14,6 +14,7 @@ class Pengemasan extends Model
         'tanggal_kemas',
         'jumlah_paket',
         'berat_per_paket',
+        'catatan',
     ];
 
     public function panen()

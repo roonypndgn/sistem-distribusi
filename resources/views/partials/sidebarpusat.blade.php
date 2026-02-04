@@ -55,7 +55,7 @@
             <div class="nav-title">Laporan</div>
             <ul class="nav-items">
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('pusat.laporan-harga') ? 'active' : '' }}">
+                    <a href="{{route('pusat.laporan-harga')}}" class="nav-link {{ request()->routeIs('pusat.laporan-harga') ? 'active' : '' }}">
                         <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
                         <span class="nav-text">Laporan Harga Beli</span>
                     </a>

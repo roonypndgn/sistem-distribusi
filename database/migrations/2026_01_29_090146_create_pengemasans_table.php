@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->integer('jumlah_kemasan');
             $table->enum('kualitas_pengemasan', ['baik', 'rusak']);
             $table->date('tanggal_kemas');
+            $table->string('catatan');
             $table->timestamps();
         });
     }

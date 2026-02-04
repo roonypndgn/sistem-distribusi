@@ -38,12 +38,12 @@
                     <i class="fas fa-seedling input-icon"></i>
                     <select id="panen_id" name="panen_id" class="form-control" required>
                         <option value="">-- Pilih Data Panen --</option>
-                        <option value="1">PNH-2024-03-001 | Panen: 25 Mar 2024 | Kualitas: A | 500 kg | Tuan Sitorus</option>
-                        <option value="2">PNH-2024-03-002 | Panen: 26 Mar 2024 | Kualitas: B | 350 kg | Budi Santoso</option>
-                        <option value="3">PNH-2024-03-003 | Panen: 27 Mar 2024 | Kualitas: A | 420 kg | Joko Widodo</option>
-                        <option value="4">PNH-2024-03-004 | Panen: 28 Mar 2024 | Kualitas: C | 280 kg | Siti Aminah</option>
-                        <option value="5">PNH-2024-03-005 | Panen: 29 Mar 2024 | Kualitas: B | 320 kg | Rudi Hartono</option>
-                        <option value="6">PNH-2024-03-006 | Panen: 30 Mar 2024 | Kualitas: A | 450 kg | Ani Wijaya</option>
+                        <option value="1">PNH-2024-03-001 | Panen: 25 Mar 2024 | Kualitas: A | 500 kg | Tuan Pandiangan</option>
+                        <option value="2">PNH-2024-03-002 | Panen: 26 Mar 2024 | Kualitas: B | 350 kg | Tuan Silalahi</option>
+                        <option value="3">PNH-2024-03-003 | Panen: 27 Mar 2024 | Kualitas: A | 420 kg | Tuan Siregar</option>
+                        <option value="4">PNH-2024-03-004 | Panen: 28 Mar 2024 | Kualitas: C | 280 kg | Pak Sinuhaji</option>
+                        <option value="5">PNH-2024-03-005 | Panen: 29 Mar 2024 | Kualitas: B | 320 kg | Ibu Munthe</option>
+                        <option value="6">PNH-2024-03-006 | Panen: 30 Mar 2024 | Kualitas: A | 450 kg | Ibu Ginting</option>
                     </select>
                 </div>
                 <small class="form-text">Pilih data panen yang akan dikemas</small>
@@ -666,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tanggal: '25 Maret 2024',
             kualitas: 'A (Premium)',
             jumlah: 500,
-            petani: 'Tuan Sitorus',
+            petani: 'Tuan Pandiangan',
             lokasi: 'Berastagi'
         },
         2: {
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tanggal: '26 Maret 2024',
             kualitas: 'B (Standar)',
             jumlah: 350,
-            petani: 'Budi Santoso',
+            petani: 'Tuan Silalahi',
             lokasi: 'Sipirok'
         },
         3: {
@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tanggal: '27 Maret 2024',
             kualitas: 'A (Premium)',
             jumlah: 420,
-            petani: 'Joko Widodo',
+            petani: 'Tuan Siregar',
             lokasi: 'Parapat'
         },
         4: {
@@ -690,7 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tanggal: '28 Maret 2024',
             kualitas: 'C (Ekonomis)',
             jumlah: 280,
-            petani: 'Siti Aminah',
+            petani: 'Pak Sinuhaji',
             lokasi: 'Berastagi'
         },
         5: {
@@ -698,7 +698,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tanggal: '29 Maret 2024',
             kualitas: 'B (Standar)',
             jumlah: 320,
-            petani: 'Rudi Hartono',
+            petani: 'Ibu Munthe',
             lokasi: 'Simalungun'
         },
         6: {
@@ -706,7 +706,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tanggal: '30 Maret 2024',
             kualitas: 'A (Premium)',
             jumlah: 450,
-            petani: 'Ani Wijaya',
+            petani: 'Ibu Ginting',
             lokasi: 'Karo'
         }
     };

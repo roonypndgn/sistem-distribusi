@@ -106,10 +106,12 @@
                 <label class="form-label">Petani</label>
                 <select class="form-control" id="filterPetani">
                     <option value="">Semua Petani</option>
-                    <option value="Tuan Sitorus">Tuan Sitorus</option>
-                    <option value="Budi Santoso">Budi Santoso</option>
-                    <option value="Joko Widodo">Joko Widodo</option>
-                    <option value="Siti Aminah">Siti Aminah</option>
+                    <option value="Tuan Pandiangan">Tuan Pandiangan</option>
+                    <option value="Tuan Silalahi">Tuan Silalahi</option>
+                    <option value="Tuan Siregar">Tuan Siregar</option>
+                    <option value="Pak Sinuhaji">Pak Sinuhaji</option>
+                    <option value="Ibu Munthe">Ibu Munthe</option>
+                    <option value="Ibu Ginting">Ibu Ginting</option>
                 </select>
             </div>
         </div>
@@ -613,11 +615,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 1,
             batch: 'PNH-2024-03-001',
-            petani: 'Tuan Sitorus',
+            petani: 'Tuan Pandiangan',
             berat: 500,
             status: 'dipanen',
             tanggal_panen: '2024-03-25',
-            supir: 'Budi Santoso',
+            supir: 'Ronny Hartono',
             kendaraan: 'TRK-001',
             tujuan: 'Medan',
             lokasi_kebun: 'Berastagi',
@@ -630,11 +632,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 2,
             batch: 'PNH-2024-03-002',
-            petani: 'Budi Santoso',
+            petani: 'Tuan Silalahi',
             berat: 350,
             status: 'dikemas',
             tanggal_panen: '2024-03-26',
-            supir: 'Joko Widodo',
+            supir: 'Rieno',
             kendaraan: 'TRK-002',
             tujuan: 'Jakarta',
             lokasi_kebun: 'Sipirok',
@@ -648,11 +650,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 3,
             batch: 'PNH-2024-03-003',
-            petani: 'Joko Widodo',
+            petani: 'Tuan Siregar',
             berat: 420,
             status: 'dikirim',
             tanggal_panen: '2024-03-27',
-            supir: 'Rudi Hartono',
+            supir: 'Risto',
             kendaraan: 'TRK-003',
             tujuan: 'Surabaya',
             lokasi_kebun: 'Parapat',
@@ -667,11 +669,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 4,
             batch: 'PNH-2024-03-004',
-            petani: 'Siti Aminah',
+            petani: 'Pak Sinuhaji',
             berat: 280,
             status: 'diterima',
             tanggal_panen: '2024-03-28',
-            supir: 'Siti Aminah',
+            supir: 'Yekris',
             kendaraan: 'TRK-004',
             tujuan: 'Bandung',
             lokasi_kebun: 'Berastagi',
@@ -687,11 +689,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 5,
             batch: 'PNH-2024-03-005',
-            petani: 'Rudi Hartono',
+            petani: 'Ibu Munthe',
             berat: 320,
             status: 'dipanen',
             tanggal_panen: '2024-03-29',
-            supir: 'Ahmad Fauzi',
+            supir: 'Trhesya',
             kendaraan: 'TRK-005',
             tujuan: 'Palembang',
             lokasi_kebun: 'Simalungun',
@@ -704,11 +706,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 6,
             batch: 'PNH-2024-03-006',
-            petani: 'Ani Wijaya',
+            petani: 'Ibu Ginting',
             berat: 450,
             status: 'dikemas',
             tanggal_panen: '2024-03-30',
-            supir: 'Budi Santoso',
+            supir: 'Maharani',
             kendaraan: 'TRK-001',
             tujuan: 'Medan',
             lokasi_kebun: 'Karo',
@@ -717,45 +719,6 @@ document.addEventListener('DOMContentLoaded', function() {
             history: [
                 { status: 'dipanen', tanggal: '2024-03-30 08:15', catatan: 'Panen pagi hari' },
                 { status: 'dikemas', tanggal: '2024-03-30 14:00', catatan: 'Dikemas dalam 45 peti kayu' }
-            ]
-        },
-        {
-            id: 7,
-            batch: 'PNH-2024-03-007',
-            petani: 'Tuan Sitorus',
-            berat: 380,
-            status: 'dikirim',
-            tanggal_panen: '2024-03-31',
-            supir: 'Joko Widodo',
-            kendaraan: 'TRK-002',
-            tujuan: 'Jakarta',
-            lokasi_kebun: 'Berastagi',
-            jenis_jeruk: 'Sipirok',
-            kualitas: 'A',
-            history: [
-                { status: 'dipanen', tanggal: '2024-03-31 10:00', catatan: 'Panen pagi hari' },
-                { status: 'dikemas', tanggal: '2024-03-31 15:30', catatan: 'Dikemas dalam 38 kardus' },
-                { status: 'dikirim', tanggal: '2024-04-01 09:00', catatan: 'Dikirim ke Jakarta' }
-            ]
-        },
-        {
-            id: 8,
-            batch: 'PNH-2024-03-008',
-            petani: 'Budi Santoso',
-            berat: 290,
-            status: 'diterima',
-            tanggal_panen: '2024-04-01',
-            supir: 'Rudi Hartono',
-            kendaraan: 'TRK-003',
-            tujuan: 'Surabaya',
-            lokasi_kebun: 'Sipirok',
-            jenis_jeruk: 'Medan',
-            kualitas: 'B',
-            history: [
-                { status: 'dipanen', tanggal: '2024-04-01 09:45', catatan: 'Panen pagi hari' },
-                { status: 'dikemas', tanggal: '2024-04-01 16:20', catatan: 'Dikemas dalam 29 keranjang' },
-                { status: 'dikirim', tanggal: '2024-04-02 08:30', catatan: 'Dikirim ke Surabaya' },
-                { status: 'diterima', tanggal: '2024-04-04 14:15', catatan: 'Sudah diterima di tujuan' }
             ]
         }
     ];

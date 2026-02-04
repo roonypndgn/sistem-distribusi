@@ -15,5 +15,9 @@ class Cuaca extends Model
         'kondisi',
         'suhu',
         'kelembaban',
+        'curah_hujan',
+        'laporan_gangguan',
+        'catatan',
+        'bukti_foto',
     ];
 }

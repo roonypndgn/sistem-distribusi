@@ -1158,8 +1158,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 1,
             user_id: "USR-001",
-            nama: "Budi Santoso",
-            email: "budi.santoso@example.com",
+            nama: "Ronny Hartono",
+            email: "ronnyhartono@mdh.co.id",
             password: "password123",
             role: "supir",
             status: "aktif",
@@ -1174,8 +1174,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 2,
             user_id: "USR-002",
-            nama: "Siti Rahayu",
-            email: "siti.rahayu@example.com",
+            nama: "Rieno Larusta",
+            email: "rieno@mdh.co.id",
             password: "password123",
             role: "manajer_lapangan",
             status: "aktif",
@@ -1190,8 +1190,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 3,
             user_id: "USR-003",
-            nama: "Ahmad Fauzi",
-            email: "ahmad.fauzi@example.com",
+            nama: "Risto Siregar",
+            email: "risto@mdh.co.id",
             password: "password123",
             role: "karyawan_lapangan",
             status: "aktif",
@@ -1206,8 +1206,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 4,
             user_id: "USR-004",
-            nama: "Rina Wijaya",
-            email: "rina.wijaya@example.com",
+            nama: "Yekris Sinuhaji",
+            email: "yekris@mdh.co.id",
             password: "password123",
             role: "supir",
             status: "aktif",
@@ -1222,8 +1222,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 5,
             user_id: "USR-005",
-            nama: "Dedi Kurniawan",
-            email: "dedi.kurniawan@example.com",
+            nama: "Trhesya Munthe",
+            email: "trhesya@mdh.co.id",
             password: "password123",
             role: "karyawan_lapangan",
             status: "nonaktif",
@@ -1238,8 +1238,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 6,
             user_id: "USR-006",
-            nama: "Maya Indah",
-            email: "maya.indah@example.com",
+            nama: "Maharani Ginting",
+            email: "maharani@mdh.co.id",
             password: "password123",
             role: "manajer_lapangan",
             status: "aktif",
@@ -1249,38 +1249,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 total_pengiriman: 30,
                 success_rate: "96%",
                 rating: 4.7
-            }
-        },
-        {
-            id: 7,
-            user_id: "USR-007",
-            nama: "Hendra Pratama",
-            email: "hendra.pratama@example.com",
-            password: "password123",
-            role: "supir",
-            status: "aktif",
-            tanggal_daftar: "2024-02-20",
-            last_login: "2024-03-20 08:45:00",
-            stats: {
-                total_pengiriman: 18,
-                success_rate: "94%",
-                rating: 4.6
-            }
-        },
-        {
-            id: 8,
-            user_id: "USR-008",
-            nama: "Linda Sari",
-            email: "linda.sari@example.com",
-            password: "password123",
-            role: "karyawan_lapangan",
-            status: "aktif",
-            tanggal_daftar: "2024-01-25",
-            last_login: "2024-03-19 15:30:00",
-            stats: {
-                total_pengiriman: 22,
-                success_rate: "90%",
-                rating: 4.3
             }
         }
     ];

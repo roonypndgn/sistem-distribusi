@@ -55,11 +55,11 @@
                         </label>
                         <select id="ladang_id" name="ladang_id" class="form-control" required>
                             <option value="">-- Pilih Ladang --</option>
-                            <option value="1">Ladang Simalungun (Berastagi) | 2.5 Ha | Tuan Sitorus</option>
-                            <option value="2">Ladang Berastagi (Pusat) | 3.0 Ha | Budi Santoso</option>
-                            <option value="3">Ladang Sipirok | 1.8 Ha | Joko Widodo</option>
-                            <option value="4">Ladang Parapat | 2.2 Ha | Siti Aminah</option>
-                            <option value="5">Ladang Karo | 1.5 Ha | Rudi Hartono</option>
+                            <option value="1">Ladang Simalungun (Berastagi) | 2.5 Ha | Tuan Pandiangan</option>
+                            <option value="2">Ladang Berastagi (Pusat) | 3.0 Ha | Tuan Silalahi</option>
+                            <option value="3">Ladang Sipirok | 1.8 Ha | Tuan Siregar</option>
+                            <option value="4">Ladang Parapat | 2.2 Ha | Pak Sinuhaji</option>
+                            <option value="5">Ladang Karo | 1.5 Ha | Ibu Munthe</option>
                         </select>
                         <small class="form-text">Pilih ladang yang akan dilaporkan</small>
                     </div>
@@ -1635,7 +1635,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const ladangData = {
         1: {
             nama: 'Ladang Simalungun',
-            pemilik: 'Tuan Sitorus',
+            pemilik: 'Tuan Pandiangan',
             luas: '2.5 Ha',
             lokasi: 'Berastagi',
             ketinggian: '1,400 mdpl',
@@ -1643,7 +1643,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         2: {
             nama: 'Ladang Berastagi',
-            pemilik: 'Budi Santoso',
+            pemilik: 'Tuan Silalahi',
             luas: '3.0 Ha',
             lokasi: 'Berastagi Pusat',
             ketinggian: '1,300 mdpl',
@@ -1651,7 +1651,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         3: {
             nama: 'Ladang Sipirok',
-            pemilik: 'Joko Widodo',
+            pemilik: 'Tuan Siregar',
             luas: '1.8 Ha',
             lokasi: 'Sipirok',
             ketinggian: '1,200 mdpl',
@@ -1659,7 +1659,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         4: {
             nama: 'Ladang Parapat',
-            pemilik: 'Siti Aminah',
+            pemilik: 'Pak Sinuhaji',
             luas: '2.2 Ha',
             lokasi: 'Parapat',
             ketinggian: '900 mdpl',
@@ -1667,7 +1667,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         5: {
             nama: 'Ladang Karo',
-            pemilik: 'Rudi Hartono',
+            pemilik: 'Ibu Munthe',
             luas: '1.5 Ha',
             lokasi: 'Karo',
             ketinggian: '1,100 mdpl',

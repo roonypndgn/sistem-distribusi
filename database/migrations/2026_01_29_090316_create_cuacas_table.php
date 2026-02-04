@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->string('curah_hujan');
             $table->text('laporan_gangguan')->nullable();
             $table->enum('sumber_data', ['api', 'manual']);
+            $table->string('catatan');
+            $table->string('bukti_foto')->nullable();
             $table->timestamps();
         });
     }

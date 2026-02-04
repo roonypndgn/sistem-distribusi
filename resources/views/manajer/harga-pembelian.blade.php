@@ -51,6 +51,9 @@
                         <option value="Pending">Ladang Pandiangan</option>
                         <option value="Verifikasi">Ladang Siregar</option>
                         <option value="Reject">Ladang Silalahi</option>
+                        <option value="Reject">Ladang Sinuhaji</option>
+                        <option value="Reject">Ladang Munthe</option>
+                        <option value="Reject">Ladang Ginting</option>
                     </select>
                 </div>
             </div>

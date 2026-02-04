@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->text('rute');
             $table->string('tujuan_akhir');
             $table->enum('status', ['dipanen', 'dikemas', 'dikirim', 'diterima']);
+            $table->string('catatan');
             $table->timestamps();
         });
     }

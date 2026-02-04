@@ -52,12 +52,12 @@
                     </label>
                     <select id="petani_id" name="petani_id" class="form-control" required>
                         <option value="">-- Pilih Petani --</option>
-                        <option value="1">Tuan Sitorus</option>
-                        <option value="2">Budi Santoso</option>
-                        <option value="3">Joko Widodo</option>
-                        <option value="4">Siti Aminah</option>
-                        <option value="5">Rudi Hartono</option>
-                        <option value="6">Ani Wijaya</option>
+                        <option value="1">Tuan Pandiangan</option>
+                        <option value="2">Tuan Silalahi</option>
+                        <option value="3">Tuan Siregar</option>
+                        <option value="4">Ibu Munthe</option>
+                        <option value="5">Pak Sinuhaji</option>
+                        <option value="6">Ibu Ginting</option>
                     </select>
                     <small class="form-text">Pilih petani pemilik ladang</small>
                 </div>
@@ -838,7 +838,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 1,
             petani_id: "1",
-            petani_nama: "Tuan Sitorus",
+            petani_nama: "Tuan Pandiangan",
             nama_ladang: "Ladang Simalungun",
             koordinat_gps: "3.589665, 98.673826",
             luas_ladang: 2.5
@@ -846,7 +846,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 2,
             petani_id: "2",
-            petani_nama: "Budi Santoso",
+            petani_nama: "Tuan Siregar",
             nama_ladang: "Ladang Berastagi",
             koordinat_gps: "3.193333, 98.508056",
             luas_ladang: 3.0
@@ -854,7 +854,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 3,
             petani_id: "3",
-            petani_nama: "Joko Widodo",
+            petani_nama: "Tuan Silalahi",
             nama_ladang: "Ladang Sipirok",
             koordinat_gps: "2.083333, 99.166667",
             luas_ladang: 1.8
@@ -862,7 +862,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 4,
             petani_id: "4",
-            petani_nama: "Siti Aminah",
+            petani_nama: "Ibu Munthe",
             nama_ladang: "Ladang Parapat",
             koordinat_gps: "2.663056, 98.932778",
             luas_ladang: 2.2
@@ -870,7 +870,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 5,
             petani_id: "5",
-            petani_nama: "Rudi Hartono",
+            petani_nama: "Pak Sinuhaji",
             nama_ladang: "Ladang Karo",
             koordinat_gps: "3.116667, 98.316667",
             luas_ladang: 1.5
@@ -878,7 +878,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 6,
             petani_id: "6",
-            petani_nama: "Ani Wijaya",
+            petani_nama: "Ibu Ginting",
             nama_ladang: "Ladang Medan",
             koordinat_gps: "3.595196, 98.672223",
             luas_ladang: 4.2
@@ -887,12 +887,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Data petani untuk dropdown
     const petaniData = {
-        "1": "Tuan Sitorus",
-        "2": "Budi Santoso",
-        "3": "Joko Widodo",
-        "4": "Siti Aminah",
-        "5": "Rudi Hartono",
-        "6": "Ani Wijaya"
+        "1": "Tuan Pandiangan",
+        "2": "Tuan Siregar",
+        "3": "Tuan Silalahi",
+        "4": "Ibu Munthe",
+        "5": "Pak Sinuhaji",
+        "6": "Ibu Ginting"
     };
     
     // Elemen DOM
